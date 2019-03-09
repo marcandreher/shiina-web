@@ -1,0 +1,539 @@
+<div class="visible-xs no-print js-header--main">
+	<div class="navbar-mobile-before"></div>
+
+	<div class="
+            navbar-mobile
+            u-section--bg
+        " role="navigation">
+		<div class="container">
+			<div class="navbar-header navbar-mobile__header">
+				<div class="navbar-mobile__header-section">
+					<a class="navbar-mobile__logo" href="/home"></a>
+					<span class="navbar-mobile__brand navbar-brand u-ellipsis-overflow">
+						${titlebar}
+					</span>
+				</div>
+
+
+				<div class="navbar-mobile__header-section navbar-mobile__header-section--buttons">
+					<#if loggedin=="true">
+						<a href="/users/${userid}"
+							class="avatar avatar--navbar-mobile js-navbar-mobile--top-icon"
+							style="background-image: url(https://a.enjuu.click/${userid});">
+						</a>
+					</#if>
+					<button type="button" class="navbar-toggle navbar-mobile__toggle u-section--color-hover"
+						data-toggle="collapse" data-target="#xs-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="navbar-mobile__toggle-icon">
+							<i class="fas fa-bars"></i>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="collapse navbar-mobile__menu js-navbar-mobile--menu" id="xs-navbar">
+		<ul class="nav navbar-nav navbar-mobile__menu-items">
+			<#if loggedin=="true">
+				<li class="navbar-mobile-item navbar-mobile-item--user">
+					<a class="navbar-mobile-item__main navbar-mobile-item__main--user"
+						href="/users/${userid}" data-toggle="collapse"
+						data-target=".js-navbar-mobile--menu">
+						<span class="avatar avatar--navbar-mobile"
+							style="background-image: url(https://a.enjuu.click/${userid});"></span>
+
+						Kazukii
+					</a>
+
+					<button class="navbar-mobile-item__main navbar-mobile-item__main--logout js-logout-link"
+						type="button" data-url="/session" data-method="DELETE"
+						data-confirm="Sicher, dass du dich ausloggen willst? :(" data-remote="1" data-toggle="collapse"
+						data-target=".js-navbar-mobile--menu">
+						<i class="fas fa-sign-out-alt"></i>
+					</button>
+				</li>
+			</#if>
+
+			<li class="navbar-mobile-item dropdown">
+				<a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle"
+					href="/home">
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+						<i class="fas fa-chevron-right"></i>
+					</span>
+
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+						<i class="fas fa-chevron-down"></i>
+					</span>
+
+					home
+				</a>
+
+				<ul class="dropdown-menu" role="menu" aria-labelledby="expand-home">
+					<li>
+						<a class="navbar-mobile-item__submenu" href="home/team"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							team
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/home/changelog"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							changelog
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/home/download"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							download
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/home/search"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							search
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="navbar-mobile-item dropdown">
+				<a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle"
+					href="/beatmapsets">
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+						<i class="fas fa-chevron-right"></i>
+					</span>
+
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+						<i class="fas fa-chevron-down"></i>
+					</span>
+
+					beatmaps
+				</a>
+
+				<ul class="dropdown-menu" role="menu" aria-labelledby="expand-beatmaps">
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/beatmapsets"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							listing
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/beatmaps/packs"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							packs
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="navbar-mobile-item dropdown">
+				<a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle"
+					href="/rankings/osu/performance">
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+						<i class="fas fa-chevron-right"></i>
+					</span>
+
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+						<i class="fas fa-chevron-down"></i>
+					</span>
+
+					leaderboards
+				</a>
+
+				<ul class="dropdown-menu" role="menu" aria-labelledby="expand-rankings">
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/rankings/osu/performance"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							performance
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/rankings/osu/score"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							score
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/rankings/osu/clans"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							clans
+						</a>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="navbar-mobile-item dropdown">
+				<a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle"
+					href="/help/wiki/Welcome">
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+						<i class="fas fa-chevron-right"></i>
+					</span>
+
+					<span
+						class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+						<i class="fas fa-chevron-down"></i>
+					</span>
+
+					help
+				</a>
+
+				<ul class="dropdown-menu" role="menu" aria-labelledby="expand-help">
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/help/wiki/Welcome"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							wiki
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/help/wiki/FAQ"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							faq
+						</a>
+					</li>
+					<li>
+						<a class="navbar-mobile-item__submenu" href="/help/wiki/Rules"
+							data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+							<span class="navbar-mobile-item__icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>
+
+							rules
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<#if loggedin=="false">
+			<li class="navbar-mobile-item dropdown">
+					<a data-toggle="dropdown" class="navbar-mobile-item__main dropdown-toggle" href="/">
+						<span
+							class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--closed">
+							<i class="fas fa-chevron-right"></i>
+						</span>
+	
+						<span
+							class="navbar-mobile-item__icon navbar-mobile-item__icon--main navbar-mobile-item__icon--opened">
+							<i class="fas fa-chevron-down"></i>
+						</span>
+	
+						account
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="expand-help">
+						<li>
+							<a class="navbar-mobile-item__submenu" href="/login"
+								data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+								<span class="navbar-mobile-item__icon">
+									<i class="fas fa-chevron-right"></i>
+								</span>
+	
+								login
+							</a>
+						</li>
+						<li>
+							<a class="navbar-mobile-item__submenu" href="/register"
+								data-toggle="collapse" data-target=".js-navbar-mobile--menu">
+								<span class="navbar-mobile-item__icon">
+									<i class="fas fa-chevron-right"></i>
+								</span>
+	
+								register
+							</a>
+						</li>
+					</ul>
+				</li>
+		  </#if>
+		</ul>
+	</div>
+
+	<form action="/home/search" class="navbar-mobile-search">
+		<input class="navbar-mobile-search__input" name="query">
+		<button class="navbar-mobile-search__icon">
+			<i class="fas fa-search"></i>
+		</button>
+	</form>
+</div>
+
+<div class="nav2-header-legacy-padding"></div>
+<div class="
+    js-pinned-header
+    hidden-xs
+    no-print
+    nav2-header
+    
+">
+	<div class="nav2-header__body">
+		<div class="nav2-header__legacy-triangles"></div>
+		<div class="nav2-header__legacy-gradient-overlay u-section--gradient-down"></div>
+
+		<div class="osu-page">
+			<div class="nav2 js-nav-button">
+				<div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
+					<div class="nav2__col nav2__col--logo">
+						<a href="/home" class="nav2__logo-link">
+							<div class="nav2__logo nav2__logo--bg"></div>
+							<div class="nav2__logo"></div>
+						</a>
+					</div>
+
+					<div class="nav2__col nav2__col--menu">
+						<a class="nav2__menu-link-main js-menu" href="/home"
+							data-menu-target="nav2-menu-popup-home" data-menu-show-delay="0">
+							<span class="nav2__menu-link-main-text">
+								home
+
+								<span class="nav2__menu-link-bar u-section--bg-normal"></span>
+							</span>
+						</a>
+
+						<div class="nav2__menu-popup">
+							<div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-home" data-visibility="hidden">
+								<a class="simple-menu__item u-section-home--before-bg-normal"
+									href="/team">
+									team
+								</a>
+								<a class="simple-menu__item u-section-home--before-bg-normal"
+									href="/home/changelog">
+									changelog
+								</a>
+								<a class="simple-menu__item u-section-home--before-bg-normal"
+									href="/home/download">
+									download
+								</a>
+								<a class="simple-menu__item u-section-home--before-bg-normal"
+									href="/home/search">
+									search
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav2__col nav2__col--menu">
+						<a class="nav2__menu-link-main js-menu" href="/beatmapsets"
+							data-menu-target="nav2-menu-popup-beatmaps" data-menu-show-delay="0">
+							<span class="nav2__menu-link-main-text">
+								beatmaps
+
+							</span>
+						</a>
+
+						<div class="nav2__menu-popup">
+							<div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-beatmaps" data-visibility="hidden">
+								<a class="simple-menu__item u-section-beatmaps--before-bg-normal"
+									href="/beatmapsets">
+									listing
+								</a>
+								<a class="simple-menu__item u-section-beatmaps--before-bg-normal"
+									href="/beatmaps/packs">
+									packs
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav2__col nav2__col--menu">
+						<a class="nav2__menu-link-main js-menu" href="/rankings/osu/performance"
+							data-menu-target="nav2-menu-popup-rankings" data-menu-show-delay="0">
+							<span class="nav2__menu-link-main-text">
+								leaderboards
+
+							</span>
+						</a>
+
+						<div class="nav2__menu-popup">
+							<div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-rankings" data-visibility="hidden">
+								<a class="simple-menu__item u-section-rankings--before-bg-normal"
+									href="/rankings/osu/performance">
+									performance
+								</a>
+								<a class="simple-menu__item u-section-rankings--before-bg-normal"
+									href="/rankings/osu/score">
+									score
+								</a>
+								<a class="simple-menu__item u-section-rankings--before-bg-normal"
+									href="/rankings/osu/clans">
+									clans
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav2__col nav2__col--menu">
+						<a class="nav2__menu-link-main js-menu" href="/help/wiki/Welcome"
+							data-menu-target="nav2-menu-popup-help" data-menu-show-delay="0">
+							<span class="nav2__menu-link-main-text">
+								help
+
+							</span>
+						</a>
+
+						<div class="nav2__menu-popup">
+							<div class="
+                            simple-menu
+                            simple-menu--nav2
+                            simple-menu--nav2-left-aligned
+                            
+                            js-menu
+                        " data-menu-id="nav2-menu-popup-help" data-visibility="hidden">
+								<a class="simple-menu__item u-section-help--before-bg-normal"
+									href="/help/wiki/Welcome">
+									wiki
+								</a>
+								<a class="simple-menu__item u-section-help--before-bg-normal"
+									href="/help/wiki/FAQ">
+									faq
+								</a>
+								<a class="simple-menu__item u-section-help--before-bg-normal"
+									href="/help/wiki/Rules">
+									rules
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="nav2__col nav2__col--menu">
+						<a href="/search" class="
+                    nav2__menu-link-main
+                    nav2__menu-link-main--search
+                    
+                ">
+							<span class="fas fa-search"></span>
+						</a>
+					</div>
+				</div>
+				<div class="nav2__colgroup js-nav-button--container">
+					<div class="nav2__col js-nav-button--item">
+						<a href="https://twitter.com/OEnjuu" class="nav2__button nav2__button--social" title="Twitter">
+							<span class="fab fa-twitter"></span>
+						</a>
+					</div>
+
+					<div class="nav2__col js-nav-button--item">
+						<a href="https://www.youtube.com/channel/UCOZ5teZ20-z0RUQ3ksGWbNA"
+							class="nav2__button nav2__button--social" title="Youtube">
+							<span class="fab fa-youtube"></span>
+						</a>
+					</div>
+
+					<div class="nav2__col">
+						<a href="/support" class="nav2__button nav2__button--support" title="Support!Enjuu">
+							<span class="fas fa-heart"></span>
+						</a>
+					</div>
+
+					<#if loggedin=="true">
+					<div class="nav2__col nav2__col--avatar">
+						<a class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header"
+							data-click-menu-target="nav2-user-popup" href="/users/${userid}"
+							style="background-image:url(https://a.enjuu.click/${userid});"></a>
+
+						<div class="nav2__click-popup nav2__click-popup--user js-user-header-popup">
+							<div class="simple-menu simple-menu--nav2 js-click-menu js-nav2--centered-popup hidden"
+								data-click-menu-id="nav2-user-popup" data-visibility="hidden">
+								<a href="/users/${userid}"
+									class="simple-menu__header simple-menu__header--link js-current-user-cover"
+									style="background-image:url(https://a.enjuu.click/${userid});">
+									<div>Kazukii</div>
+								</a>
+
+								<a class="simple-menu__item" href="/users/${userid}">
+									My profile
+								</a>
+
+								<a class="simple-menu__item" href="/home/friends">
+									Friends
+								</a>
+
+								<a class="simple-menu__item" href="/home/account/edit">
+									Settings
+								</a>
+
+								<a class="simple-menu__item" href="/logout">
+									Logout
+								</a>
+							</div>
+						</div>
+					</div>
+					<#else>
+
+					<div class="landing-nav__section" style="padding-left: 5%;">
+							<a href="/login" class="landing-nav__link js-nav-toggle">
+								Login
+							</a>
+			
+							<a href="/register" class="landing-nav__link js-nav-toggle">
+								Register
+							</a>
+						</div>
+					</#if>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

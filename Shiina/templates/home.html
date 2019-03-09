@@ -1,0 +1,197 @@
+<#include "base.html">
+  <div class="osu-layout__section osu-layout__section--full js-content home_index">
+    <div class="osu-page osu-page--header">
+      <ul class="page-mode">
+        <li class="page-mode__item">
+          <a href="/" class="
+page-mode-link
+page-mode-link--is-active
+">
+            Home
+
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+        <#if loggedin=="true">
+          <li class="page-mode__item">
+            <a href="/home/friends" class="
+page-mode-link
+
+">
+              Friends
+
+              <span class="page-mode-link__stripe"></span>
+            </a>
+          </li>
+
+          <li class="page-mode__item">
+            <a href="/home/account/edit" class="
+page-mode-link
+
+">
+              Settings
+
+              <span class="page-mode-link__stripe"></span>
+            </a>
+          </li>
+        </#if>
+      </ul>
+
+      <div class="osu-page-header osu-page-header--two-col osu-page-header--home-user js-current-user-cover"
+        style="background-image: url(&quot;https://osu.ppy.sh/images/headers/profile-covers/c7.jpg&quot;);">
+        <div class="osu-page-header__box osu-page-header__box--two-col">
+          <h1 class="osu-page-header__title u-ellipsis-overflow">
+            <#if loggedin=="true">
+              Hello, <strong><a href="/users/${userid}" class="link link--white">${user}</a></strong>!
+              <#else>
+                Welcome to <strong>Enjuu!</strong>
+            </#if>
+          </h1>
+        </div>
+
+        <div class="osu-page-header__box osu-page-header__box--status osu-page-header__box--graph">
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Registered Users
+            </div>
+            <div class="js-forum-topic-watch--unread osu-page-header__status-text">
+              ${users}
+            </div>
+          </div>
+
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Submitted Scores
+            </div>
+            <div class="js-forum-topic-watch--unread osu-page-header__status-text">
+              ${scores}
+            </div>
+          </div>
+
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Beatmaps
+            </div>
+            <div class="osu-page-header__status-text">
+              ${beatmaps}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="osu-page osu-page--small-desktop">
+      <div class="user-home">
+        <div class="user-home__news">
+          <h2 class="user-home__news-title">Infos</h2>
+
+
+          <div class="news-post-preview">
+            <a class="news-post-preview__image"
+              style="background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2017/03/25/1083088/6b674f5eed74815e74a5dfe10dd7ae7f-700.jpg); outline-width: 0px !important; user-select: auto !important;"></a>
+            <div class="news-post-preview__body" >
+              <div class="news-post-preview__post-right">
+                <a class="news-post-preview__post-title" style="margin-left: 5%;">
+                  What is Enjuu?
+                </a>
+                <div class="news-post-preview__post-content" style="margin-left: 5%;">
+                  <p>Enjuu is a custom server for the game osu!. We have free osu!Direct, beatmap listing, clans and more! Have fun on Enjuu! We are using ripple, and the most of our Stuff is open-source, nice huh?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="news-post-preview">
+              <a class="news-post-preview__image"
+                style="background-image: url(https://media.proprofs.com/images/QM/user_images/1452023/1488347079.png); outline-width: 0px !important; user-select: auto !important;"></a>
+              <div class="news-post-preview__body" >
+                <div class="news-post-preview__post-right">
+                  <a class="news-post-preview__post-title" style="margin-left: 5%;">
+                    Is this free?
+                  </a>
+                  <div class="news-post-preview__post-content" style="margin-left: 5%;">
+                    <p>Everything gameplay related is free, but for a few bucks you can buy some extra stuff at out <strong>Store.</strong> Like multiple username changing or flag changing</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="news-post-preview">
+                <a class="news-post-preview__image"
+                  style="background-image: url(https://addons-media.operacdn.com/media/CACHE/images/themes/55/108655/1.0-rev1/images/f04ece0b-8edf-46b2-9c5b-489543b79477/8e77fd8dfe5047c773a1bb4683816b4f.jpg); outline-width: 0px !important; user-select: auto !important;"></a>
+                <div class="news-post-preview__body" >
+                  <div class="news-post-preview__post-right">
+                    <a href="https://discord.gg/WYbwfJS" class="news-post-preview__post-title" style="margin-left: 5%;">
+                      How to chat with us?
+                    </a>
+                    <div class="news-post-preview__post-content" style="margin-left: 5%;">
+                      <p>You can join our Discord and talk to the whole Enjuu Community. Join our <a href="https://discord.gg/WYbwfJS">Discord</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+        </div>
+        <div class="user-home__right-sidebar">
+          <div class="user-home__buttons">
+            <div class="user-home__button">
+              <a href="/download" class="btn-home btn-home--">
+                <span class="btn-home__text">Download Switcher</span>
+                <span class="btn-home__icon">
+                  <i class="fas fa-fw fa-download"></i>
+                </span>
+              </a>
+            </div>
+
+            <div class="user-home__button">
+              <a href="/home/support" class="btn-home btn-home--green">
+                <span class="btn-home__text">Support! Enjuu</span>
+                <span class="btn-home__icon">
+                  <i class="fas fa-fw fa-heart"></i>
+                </span>
+              </a>
+            </div>
+
+            <div class="user-home__button">
+              <a href="/store/listing" class="btn-home btn-home--pink-darker">
+                <span class="btn-home__text">How to connect?</span>
+                <span class="btn-home__icon">
+                  <i class="far fa-question-circle"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="user-home__beatmap-list-title">
+            New ranked Beatmaps
+          </h3>
+
+          <div class="user-home__beatmapsets">
+            <#list latest_beatmaps>
+              <#items as beatmap>
+
+                <a class="user-home-beatmapset" href="/beatmapsets/${beatmap.setid}">
+                  <img class="user-home-beatmapset__cover" src="https://b.ppy.sh/thumb/${beatmap.setid}.jpg">
+
+                  <div class="user-home-beatmapset__meta">
+                    <div class="user-home-beatmapset__title u-ellipsis-overflow">${beatmap.artist}</div>
+                    <div class="user-home-beatmapset__artist u-ellipsis-overflow">${beatmap.name}</div>
+                  </div>
+                  <div class="user-home-beatmapset__chevron"><i class="fas fa-chevron-right"></i></div>
+                </a>
+
+              </#items>
+            </#list>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <#include "footer.html">

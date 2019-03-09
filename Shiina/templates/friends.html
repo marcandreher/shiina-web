@@ -1,0 +1,154 @@
+<#include "base.html">
+  <div class="osu-layout__section osu-layout__section--full js-content home_index">
+    <div class="osu-page osu-page--header">
+      <ul class="page-mode">
+        <li class="page-mode__item">
+          <a href="/" class="
+page-mode-link
+">
+            Home
+
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+        <#if loggedin=="true">
+          <li class="page-mode__item">
+            <a href="/home/friends" class="
+page-mode-link
+page-mode-link--is-active
+">
+              Friends
+
+              <span class="page-mode-link__stripe"></span>
+            </a>
+          </li>
+
+          <li class="page-mode__item">
+            <a href="/home/account/edit" class="
+page-mode-link
+
+">
+              Settings
+
+              <span class="page-mode-link__stripe"></span>
+            </a>
+          </li>
+        </#if>
+      </ul>
+        <div class="osu-page-header osu-page-header--two-col osu-page-header--home-user js-current-user-cover"
+        style="background-image: url(&quot;https://osu.ppy.sh/images/headers/profile-covers/c7.jpg&quot;);">
+        <div class="osu-page-header__box osu-page-header__box--two-col">
+          <h1 class="osu-page-header__title u-ellipsis-overflow">
+              <strong>Friends</strong>
+          </h1>
+        </div>
+
+        <div class="osu-page-header__box osu-page-header__box--status osu-page-header__box--graph">
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Registered Users
+            </div>
+            <div class="js-forum-topic-watch--unread osu-page-header__status-text">
+              ${users}
+            </div>
+          </div>
+
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Submitted Scores
+            </div>
+            <div class="js-forum-topic-watch--unread osu-page-header__status-text">
+              ${scores}
+            </div>
+          </div>
+
+          <div class="osu-page-header__status">
+            <div class="osu-page-header__status-label">
+              Beatmaps
+            </div>
+            <div class="osu-page-header__status-text">
+              ${beatmaps}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="osu-page osu-page--generic osu-page--small osu-page--dark-bg">
+    <div class="user-friends">
+      <div class="usercard-list">
+        <div class="usercard-list__cards">
+
+          <#list friends>
+            <#items as friend>
+
+              <div class="usercard">
+                <a href="/users/${friend.id}" class="usercard__background-container">
+                  <img class="usercard__background" src="https://osu.ppy.sh/images/headers/profile-covers/c2.jpg">
+                  <div class="usercard__background-overlay"></div>
+                </a>
+                <div class="usercard__card">
+                  <div class="usercard__card-content">
+                    <div class="usercard__avatar-space">
+                      <div class="usercard__avatar usercard__avatar--loader js-usercard--avatar-loader">
+                        <div class="la-ball-clip-rotate"></div>
+                      </div>
+                      <img class="usercard__avatar usercard__avatar--main"
+                        src="https://a.enjuu.click/${friend.id}">
+                    </div>
+                    <div class="usercard__metadata">
+                      <div class="usercard__username">${friend.name}</div>
+                      <a href="/unfriend?id=${friend.id}&action=friend"><div class="usercard__icons">
+                        <div class="usercard__icon js-react--friendButton" data-target="${friend.id}"
+                          data-react-turbolinks-loaded="1">
+                          <#if friend.status = false>
+                          <div><button type="button"
+                              class="user-action-button user-action-button--friend"><span
+                                class="user-action-button__icon-container"><span
+                                  class="user-action-button__icon user-action-button__icon--hover-visible"><i
+                                    class="fas fa-user-times"></i></span><span
+                                  class="user-action-button__icon user-action-button__icon--hover-hidden"><i
+                                    class="fas fa-user"></i></span></span></button></div>
+
+                                    <#else>
+                                    <button type="button" class="user-action-button user-action-button--mutual"><span class="user-action-button__icon-container"><span class="user-action-button__icon user-action-button__icon--hover-visible"><i class="fas fa-user-times"></i></span><span class="user-action-button__icon user-action-button__icon--hover-hidden"><i class="fas fa-user"></i><i class="fas fa-user"></i></span></span></button>
+                          </#if>
+
+                        </div>
+                      </a>
+                      </div>
+                    </div>
+                  </div>
+                  <#if friend.online == true>
+                  <div class="usercard__status-bar usercard__status-bar--online">
+                    <span class="far fa-fw fa-circle usercard__status-icon"></span>
+                    <span class="usercard__status-message">
+                      Online
+                    </span>
+                  </div>
+                  <#else>
+                  <div class="usercard__status-bar usercard__status-bar--offline">
+                    <span class="far fa-fw fa-circle usercard__status-icon"></span>
+                    <span class="usercard__status-message" title="Zuletzt gesehen vor 20 Stunden">
+                        Offline
+                    </span>
+                </div>
+                </#if>
+                </div>
+              </div>
+              
+            </#items>
+
+            <#else>
+            <h3>You don't have any friends :(</h3>
+          </#list>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+
+  <#include "footer.html">

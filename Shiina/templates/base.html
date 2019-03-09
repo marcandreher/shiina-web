@@ -1,0 +1,77 @@
+<html style="--vh:9.98px;">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		.turbolinks-progress-bar {
+			position: fixed;
+			display: block;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: #0076ff;
+			z-index: 9999;
+			transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+			transform: translate3d(0, 0, 0);
+		}
+	</style>
+
+	<head>
+		<!-- Title -->
+		<title>${titlebar} - Enjuu</title>
+
+		<!-- Style -->
+		<link href="/css" rel="stylesheet" type="text/css">
+		<link href="/css(1)" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" media="all" href="/default-skin.css">
+		<link rel="stylesheet" media="all" href="/app.css" data-turbolinks-track="reload">
+
+		<script>
+			var currentLocale = "de";
+			var fallbackLocale = "en";
+		</script>
+
+		<script src="/vendor.js.Download" data-turbolinks-track="reload"></script>
+		<script src="/app-deps.js.Download" data-turbolinks-track="reload"></script>
+		<script src="/app.js.Download" data-turbolinks-track="reload"></script>
+		<script src="/jquery.timeago.de.js.Download" data-turbolinks-track="reload"></script>
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="https://s.ppy.sh/apple-touch-icon.png">
+		<link rel="icon" sizes="32x32" href="https://s.ppy.sh/favicon-32x32.png">
+		<link rel="icon" sizes="16x16" href="https://s.ppy.sh/favicon-16x16.png">
+		<link rel="manifest" href="https://s.ppy.sh/site.webmanifest">
+		<link rel="mask-icon" href="https://s.ppy.sh/safari-pinned-tab.svg" color="#e2609a">
+		<meta name="msapplication-TileColor" content="#603cba">
+		<meta name="theme-color" content="#cc5288">
+		<meta name="description"
+			content="osu! - Der Rhythmus ist nur einen *Klick* entfernt!  Mit Ouendan/EBA, Taiko und eigenen Spielmodi, zusätzlich zu einem voll funktionalen Leveleditor">
+		<meta name="keywords"
+			content="osu, peppy, ouendan, elite, beat, agents, ds, windows, game, taiko, tatsujin, simulator, sim, xna, ddr, beatmania, osu!, osume">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+			integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css"
+			href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+		<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+		<script>
+			window.addEventListener("load", function () {
+				window.cookieconsent.initialise({
+					"palette": {
+						"popup": {
+							"background": "#000"
+						},
+						"button": {
+							"background": "#f1d600"
+						}
+					}
+				})
+			});
+		</script>
+
+	</head>
+
+<body class="<#if profile??>osu-layout osu-layout--body t-section-community action-profile osu-layout--body-222-plain<#else>osu-layout osu-layout--body t-section-home action-index</#if>">
+	<div id="overlay" class="blackout blackout--overlay" style="display: none;"></div>
+	<div class="blackout js-blackout" data-visibility="hidden"></div>
+	<#include "navbar.html">
