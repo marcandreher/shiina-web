@@ -104,7 +104,7 @@ public class ClanLeaderboard extends Route {
 		m.put("lastpage", page - 1);
 
 		try {
-			Template template = Site.cfg.getTemplate("leaderboardpp.html");
+			Template template = Site.cfg.getTemplate("leaderboard.html");
 			Writer out = new StringWriter();
 			template.process(m, out);
 			String outt = out.toString();

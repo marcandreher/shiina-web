@@ -61,12 +61,12 @@ public class Site {
 		Spark.externalStaticFileLocation("static/");
 		
 		File templates = new File("templates/");
-		File websitedocs = new File("static/");
+		File staticfolder = new File("static/");
 		
-		final File[] alldocs = websitedocs.listFiles();
+		final File[] staticfiles = staticfolder.listFiles();
 		
 		if(!templates.exists())templates.mkdirs();
-		if(!websitedocs.exists())websitedocs.mkdirs();
+		if(!staticfolder.exists())staticfolder.mkdirs();
 		
 		cfg.setDirectoryForTemplateLoading(templates);
 		
@@ -120,7 +120,7 @@ public class Site {
 			@Override
 			public Object handle(Request request, Response response) {
 				Boolean s = false;
-				for(File f : alldocs) {
+				for(File f : staticfiles) {
 					if(request.pathInfo().startsWith("/"+f.getName())) {
 						s = true;
 					}

@@ -1,0 +1,154 @@
+<#include "base.html">
+  <div class="osu-layout__section osu-layout__section--full js-content rankings_performance">
+    <div class="osu-page">
+      <ul class="page-mode">
+        <li class="page-mode__item">
+          <a class="page-mode-link <#if mode == "0"> page-mode-link--is-active</#if>" href="/rankings/osu/${url}">
+            osu!
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+        <li class="page-mode__item">
+          <a class="page-mode-link <#if mode == "1"> page-mode-link--is-active</#if>" href="/rankings/taiko/${url}">
+            osu!taiko
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+        <li class="page-mode__item">
+          <a class="page-mode-link <#if mode == "2"> page-mode-link--is-active</#if>" href="/rankings/fruits/${url}">
+            osu!catch
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+        <li class="page-mode__item">
+          <a class="page-mode-link <#if mode == "3"> page-mode-link--is-active</#if>" href="/rankings/mania/${url}">
+            osu!mania
+            <span class="page-mode-link__stripe"></span>
+          </a>
+        </li>
+      </ul>
+      <div class="ranking-page-header">
+        <ul class="page-mode page-mode--ranking-page-mode-tabs">
+          <li class="page-mode__item">
+            <a class="page-mode-link page-mode-link--white <#if url = "performance">page-mode-link--is-active</#if>" href="/rankings/${fmode}/performance">
+              PP
+              <span class="page-mode-link__stripe page-mode-link__stripe--black"></span>
+            </a>
+          </li>
+          <li class="page-mode__item">
+            <a class="page-mode-link page-mode-link--white <#if url = "clans">page-mode-link--is-active</#if>" href="/rankings/${fmode}/clans">
+              Clans
+              <span class="page-mode-link__stripe page-mode-link__stripe--black"></span>
+            </a>
+          </li>
+          <li class="page-mode__item">
+            <a class="page-mode-link page-mode-link--white <#if url = "score">page-mode-link--is-active</#if>" href="/rankings/${fmode}/score">
+              Score
+              <span class="page-mode-link__stripe page-mode-link__stripe--black"></span>
+            </a>
+          </li>
+        </ul>
+        <hr class="page-mode__underline">
+
+        <div class="ranking-page-header__title">
+          <span class="ranking-page-header__title-type">${which}</span> Leaderboard
+        </div>
+      </div>
+    </div>
+    <div class="osu-page osu-page--small osu-page--rankings">
+      <#if page != 1>
+      <a href="/rankings/${fmode}/${url}?page=${lastpage}#scores">
+        <div class="login-box__row login-box__row--actions">
+          <div class="login-box__action">
+            <button class="btn-osu-big btn-osu-big--nav-popup">
+              <div class="btn-osu-big__content">
+                <span class="btn-osu-big__right">
+                  Last
+                </span>
+                <span class="fas fa-arrow-left"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </a>
+</#if>
+
+      <div class="ranking-page">
+        <div class="ranking-page__jump-target" id="scores"></div>
+        <table class="ranking-page-table">
+          <thead>
+            <tr>
+              <th class="ranking-page-table__heading"></th>
+              <th class="ranking-page-table__heading ranking-page-table__heading--main"></th>
+              <#if which != "Clan">
+              <th class="ranking-page-table__heading">
+                Acc
+              </th>
+              </#if>
+              <th class="ranking-page-table__heading">
+                Playcount
+              </th>
+              <th class="ranking-page-table__heading ranking-page-table__heading--focused">
+                <#if which == "Clan">PP<#else>${which}</#if>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <#list leaderboard>
+              <#items as lb>
+
+                <tr class="ranking-page-table__row" style="color:white;">
+                  <td class="ranking-page-table__column ranking-page-table__column--rank">
+                    #${lb.rank}
+                  </td>
+                  <td class="ranking-page-table__column">
+                    <div class="ranking-page-table__user-link">
+                        <#if which != "Clan">
+                        <span class="flag-country"
+                          style="background-image: url('https://osu.ppy.sh/images/flags/${lb.country}.png');"
+                          data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
+                      </#if>
+                      <a href="/<#if which != "Clan">users<#else>clans</#if>/${lb.id}">
+                        <span class="ranking-page-table__user-link-text">
+                          ${lb.name}
+                        </span>
+                      </a>
+                    </div>
+                  </td>
+                  <#if which != "Clan">
+                  <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                    ${lb.acc}&nbsp;%
+                  </td>
+                  </#if>
+                  <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                    ${lb.playcount}
+                  </td>
+                  <td class="ranking-page-table__column ranking-page-table__column--focused">
+                    ${lb.pp}
+                  </td>
+                </tr>
+
+              </#items>
+            </#list>
+          </tbody>
+        </table>
+      </div>
+      <#if size == 50><a href="/rankings/${fmode}/${url}?page=${nextpage}#scores"></#if>
+        <div class="login-box__row login-box__row--actions">
+          <div class="login-box__action">
+            <button class="<#if size != 50>user-action-button user-action-button--profile-page<#else>btn-osu-big disabled btn-osu-big--nav-popup</#if>">
+              <div class="btn-osu-big__content">
+                <span class="btn-osu-big__left">
+                  <#if size == 50>Next<#else>You are at the end :(</#if>
+                </span>
+                <#if size == 50><span class="fas fa-arrow-right"></span></#if>
+              </div>
+            </button>
+          </div>
+        </div>
+        <#if size == 50></a></#if>
+
+    </div>
+  </div>
+
+  <#include "footer.html">
