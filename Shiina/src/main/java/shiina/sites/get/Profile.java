@@ -3,6 +3,7 @@ package shiina.sites.get;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import kazukii.me.gg.configs.Config;
 import kazukii.me.gg.configs.u;
 import kazukii.me.gg.sites.Permission;
 import shiina.content.API;
@@ -60,10 +62,12 @@ public class Profile extends Route {
 
 		String aka = null;
 		String country = null;
+		int favo = 0;
 		try {
 			ResultSet userstats = mysql.Query("SELECT * FROM `users_stats` WHERE `id` = ?", request.params(":id"));
 
 			while (userstats.next()) {
+				favo = userstats.getInt("favourite_mode");
 				aka = userstats.getString("username_aka");
 				country = userstats.getString("country");
 				if (aka.length() <= 1) {
@@ -74,6 +78,21 @@ public class Profile extends Route {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		if(request.params("mode") == null) {
+			String mode = null;
+			if(favo == 0) {
+				mode = "osu";
+			}else if(favo == 1) {
+				mode = "taiko";
+			}else if(favo == 2) {
+				mode = "ctb";
+			}else if(favo == 3) {
+				mode = "mania";
+			}
+			response.redirect("/users/"+request.params(":id") + "/"+mode);
+			return null;
 		}
 		
 		try {
@@ -102,18 +121,23 @@ public class Profile extends Route {
 		m.put("puser", name);
 		m.put("pcountry", country);
 		m.put("pprivileges", privileges);
-		if (m.get("userid").toString().contains(m.get("pid").toString())) {
-			m.put("yourself", "true");
-		} else {
+		if(m.get("loggedin") == "true") {
+			if (m.get("userid").toString().contains(m.get("pid").toString())) {
+				m.put("yourself", "true");
+			} else {
+				m.put("yourself", "false");
+			}
+		}else {
 			m.put("yourself", "false");
 		}
+		
 
 		JSONObject jsonObject = new JSONObject(API.request("users/full?id=" + request.params(":id")));
-		JSONObject mode = jsonObject.getJSONObject("std");
+		JSONObject mode = jsonObject.getJSONObject(request.params("mode").replaceAll("osu", "std").replaceAll("fruits", "ctb"));
 		try {
 			m.put("prank", mode.getInt("global_leaderboard_rank"));
 		} catch (Exception e) {
-			m.put("prank", "SS");
+			m.put("prank", "Unknown");
 		}
 		
 		
@@ -124,10 +148,14 @@ public class Profile extends Route {
 		m.put("phits", mode.getInt("total_hits"));
 		m.put("latest_activity", jsonObject.getString("latest_activity"));
 		m.put("registered_on", jsonObject.getString("registered_on"));
-		m.put("plvf", mode.getInt("level"));
+		m.put("plvf", mode.getLong("level"));
 		String lv = mode.getDouble("level") + "";
-		u.s.println(lv.substring(0,(int)Math.log10(mode.getInt("level"))+2));
-		m.put("plv", lv.substring((int)Math.log10(mode.getInt("level"))+2, lv.length()).substring(0,2));
+		try {
+			m.put("plv", lv.substring((int)Math.log10(mode.getLong("level"))+2, lv.length()).substring(0,2));
+		}catch(Exception e) {
+			m.put("plv", "0");
+			e.printStackTrace();
+		}
 		m.put("pacc", mode.getLong("accuracy"));
 		m.put("ppp", mode.getInt("pp"));
 		try {
@@ -147,10 +175,38 @@ public class Profile extends Route {
 		} catch (Exception e) {
 			m.put("subs", 0);
 		}
+		
+		if(m.get("loggedin") == "true") {
+			try {
+				int i = 0;
+				
+					PreparedStatement stmt = mysql.getCon().prepareStatement("SELECT * FROM `users_relationships` WHERE user1= ? AND user2 = ?");
+					stmt.setInt(1, Integer.parseInt(m.get("userid").toString()));
+					stmt.setInt(2, Integer.parseInt(request.params(":id")));
+					if (Config.getString("debug").contains("true")) {
+						u.s.println(stmt.toString());
+					}
+					
+					ResultSet getFriendStatus = stmt.executeQuery();
+				while (getFriendStatus.next()) {
+					 i = 1;
+					m.put("isFriend", "true");
+				}
+				
+				if(i==0) {
+					m.put("isFriend", "false");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				m.put("isFriend", "false");
+			}
+		}
 
 		m.put("titlebar", "Profile of " + name);
 		m.put("fixed", "false");
 		m.put("profile", "true");
+		
+		m.put("mode", request.params(":mode"));
 
 		try {
 			Template template = Site.cfg.getTemplate("profile.html");

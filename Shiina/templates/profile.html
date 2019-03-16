@@ -22,11 +22,10 @@
               </div>
               <div class="game-mode">
                 <ul class="game-mode__items">
-                  <li class="game-mode__item"><a class="game-mode-link game-mode-link--active"
-                      href="/users/${pid}/osu">osu!<span class="game-mode-link__icon"></span></a></li>
-                  <li class="game-mode__item"><a class="game-mode-link" href="/users/${pid}/taiko">osu!taiko</a></li>
-                  <li class="game-mode__item"><a class="game-mode-link" href="/users/${pid}/fruits">osu!catch</a></li>
-                  <li class="game-mode__item"><a class="game-mode-link" href="/users/${pid}/mania">osu!mania</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "osu">game-mode-link--active"</#if> " href="/users/${pid}/osu">osu</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "taiko">game-mode-link--active"</#if> " href="/users/${pid}/taiko">osu!taiko</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "fruits">game-mode-link--active"</#if> " href="/users/${pid}/fruits">osu!catch</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "mania">game-mode-link--active"</#if> " href="/users/${pid}/mania">osu!mania</a></li>
                 </ul>
               </div>
             </div>
@@ -45,27 +44,13 @@
                   <div class="profile-info__details">
                     <h1 class="profile-info__name"><span class="u-ellipsis-overflow">${puser}</span>
                       <div class="profile-info__previous-usernames">
-                        <#if paka??>
-                          <div class="profile-previous-usernames"><a
-                              class="profile-previous-usernames__icon profile-previous-usernames__icon--with-title"
-                              title="aka: ${paka}"><span class="fas fa-address-card"></span></a>
-                            <div class="profile-previous-usernames__icon profile-previous-usernames__icon--plain"><span
-                                class="fas fa-address-card"></span></div>
+                          <div class="profile-previous-usernames"><a></span></a>
+                            <div class="prs"><span
+                                class=""></span></div>
                             <div class="profile-previous-usernames__content">
-                              <div class="profile-previous-usernames__title">aka</div>
-                              <div class="profile-previous-usernames__names">${paka}</div>
+                              <div class="profile-previous-usernames__title"></div>
+                              <div class="profile-previous-usernames__names"></div>
                             </div>
-                            <#else>
-                              <div class="profile-previous-usernames"><a
-                                  class="profile-previous-usernames__icon profile-previous-usernames__icon--with-title"
-                                  title="aka: No other names here :("><span class="fas fa-address-card"></span></a>
-                                <div class="profile-previous-usernames__icon profile-previous-usernames__icon--plain">
-                                  <span class="fas fa-address-card"></span></div>
-                                <div class="profile-previous-usernames__content">
-                                  <div class="profile-previous-usernames__title">aka</div>
-                                  <div class="profile-previous-usernames__names">No other names here :(</div>
-                                </div>
-                        </#if>
                       </div>
                   </div>
                   </h1><span class="profile-info__title">&nbsp;</span>
@@ -140,12 +125,35 @@
               <div class="profile-detail__bar">
                 <div class="profile-detail-bar">
                   <div class="profile-detail-bar__column profile-detail-bar__column--left">
-                    <div class="profile-detail-bar__menu-item">
+                    <#if loggedin == "false">
                       <div title="Friends"><button type="button"
-                          class="user-action-button user-action-button--profile-page" disabled=""><span
-                            class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                            class="user-action-button__counter">${subs}</span></button></div>
-                    </div>
+                      class="user-action-button user-action-button--profile-page" disabled=""><span
+                        class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                        class="user-action-button__counter">${subs}</span></button></div>
+                    <#else>
+                      <div class="profile-detail-bar__menu-item">
+                          <#if yourself== "true">
+                          <div title="Friends"><button type="button"
+                            class="user-action-button user-action-button--profile-page" disabled=""><span
+                              class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                              class="user-action-button__counter">${subs}</span></button></div>
+                          <#else>
+                          
+                          <#if isFriend = "true">
+                          <a href="/unfriend?action=user&id=${pid}"><div title="Remove friend"><button type="button"
+                            class="user-action-button user-action-button--profile-page user-action-button--friend" disabled=""><span
+                              class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                              class="user-action-button__counter">${subs}</span></button></div></a>
+                          <#else>
+                          <a href="/friend?action=user&user=${pid}"><div title="Add friend"><button type="button"
+                            class="user-action-button user-action-button--profile-page" disabled=""><span
+                              class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                              class="user-action-button__counter">${subs}</span></button></div></a>
+                          </#if>
+                          
+                        </#if>
+                      </div>
+                    </#if>
                   </div>
                   <div class="profile-detail-bar__column profile-detail-bar__column--right">
                     <div title="Progress of your level"

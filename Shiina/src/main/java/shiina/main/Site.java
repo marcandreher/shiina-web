@@ -18,6 +18,7 @@ import shiina.content.mysql;
 import shiina.sites.get.ClanLeaderboard;
 import shiina.sites.get.Download;
 import shiina.sites.get.Error;
+import shiina.sites.get.Friend;
 import shiina.sites.get.Friends;
 import shiina.sites.get.Home;
 import shiina.sites.get.Leaderboard;
@@ -79,9 +80,11 @@ public class Site {
 		getroutes.add(new Login("/register"));
 		getroutes.add(new Logout("/logout"));
 		getroutes.add(new Unfriend("/unfriend"));
+		getroutes.add(new Friend("/friend"));
 		getroutes.add(new Download("/home/download"));
 		getroutes.add(new Download("/download"));
 		
+		getroutes.add(new Profile("/users/:id/:mode"));
 		getroutes.add(new Profile("/users/:id"));
 		
 		getroutes.add(new Leaderboard("/rankings/osu/performance", "0"));

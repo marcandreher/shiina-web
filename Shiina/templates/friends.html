@@ -100,7 +100,7 @@ page-mode-link
                     </div>
                     <div class="usercard__metadata">
                       <div class="usercard__username">${friend.name}</div>
-                      <a href="/unfriend?id=${friend.id}&action=friend"><div class="usercard__icons">
+                      <a href="/unfriend?action=friend&id=${friend.id}"><div class="usercard__icons">
                         <div class="usercard__icon js-react--friendButton" data-target="${friend.id}"
                           data-react-turbolinks-loaded="1">
                           <#if friend.status = false>

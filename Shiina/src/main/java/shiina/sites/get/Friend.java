@@ -9,11 +9,11 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-public class Unfriend extends Route {
+public class Friend extends Route {
 
 	public Map<String, Object> m = new HashMap<String, Object>();
 
-	public Unfriend(String path) {
+	public Friend(String path) {
 		super(path);
 	}
 
@@ -22,17 +22,27 @@ public class Unfriend extends Route {
 		
 		Permission.hasPermissions(request, m);
 		
+		if(request.queryParams("action") == null || request.queryParams("user") == null) {
+			return new Error().generateError(request, "null", "null");
+		}
+		
+		if(!request.queryParams("action").contains("user")) {
+			return new Error().generateError(request, "null", "null");
+		}
 		
 		try {
-			mysql.Exec("DELETE FROM `users_relationships` WHERE `user1`=? AND `user2`=?", (String) m.get("userid"), request.queryParams("id"));
+			mysql.Exec("INSERT INTO `users_relationships`(`user1`, `user2`) VALUES (?,?)", (String) m.get("userid"), request.queryParams("user"));
 		} catch (Exception e) {
 			return new Error().generateError(request, "java", e.getMessage().toString());
 		}
 		
 		if(request.queryParams("action").contains("friend")) {
 			response.redirect("/home/friends");
+			return null;
+			
 		}else if(request.queryParams("action").contains("user")) {
-			response.redirect("/users/"+request.queryParams("id"));
+			response.redirect("/users/"+request.queryParams("user"));
+			return null;
 		}
 		
 		return null;
