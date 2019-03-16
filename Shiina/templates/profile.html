@@ -138,19 +138,17 @@
                               class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
                               class="user-action-button__counter">${subs}</span></button></div>
                           <#else>
-                          
-                          <#if isFriend = "true">
-                          <a href="/unfriend?action=user&id=${pid}"><div title="Remove friend"><button type="button"
-                            class="user-action-button user-action-button--profile-page user-action-button--friend" disabled=""><span
-                              class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                              class="user-action-button__counter">${subs}</span></button></div></a>
-                          <#else>
-                          <a href="/friend?action=user&user=${pid}"><div title="Add friend"><button type="button"
-                            class="user-action-button user-action-button--profile-page" disabled=""><span
-                              class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                              class="user-action-button__counter">${subs}</span></button></div></a>
-                          </#if>
-                          
+                            <#if isFriend = "true">
+                            <a href="/unfriend?action=user&id=${pid}"><div title="Remove friend"><button type="button"
+                              class="user-action-button user-action-button--profile-page user-action-button--friend" disabled=""><span
+                                class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                                class="user-action-button__counter">${subs}</span></button></div></a>
+                            <#else>
+                            <a href="/friend?action=user&user=${pid}"><div title="Add friend"><button type="button"
+                              class="user-action-button user-action-button--profile-page" disabled=""><span
+                                class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                                class="user-action-button__counter">${subs}</span></button></div></a>
+                            </#if>
                         </#if>
                       </div>
                     </#if>
@@ -307,36 +305,30 @@
       </div>
     </div>
     <div class="osu-layout__section osu-layout__section--users-extra">
-      <div class="osu-layout__row ui-sortable" data-vivaldi-spatnav-clickable="1">
+        <div class="osu-layout__row ui-sortable" data-vivaldi-spatnav-clickable="1">
+    <#if userpages != "">
+    
+      
         <div data-page-id="me"
           class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
           <div class="page-extra page-extra--userpage">
             <div>
-              <h2 class="page-extra__title">ich!</h2><span
-                class="page-extra__dragdrop-toggle hidden-xs js-profile-page-extra--sortable-handle ui-sortable-handle"><i
-                  class="fas fa-bars"></i></span>
+              <h2 class="page-extra__title">Userpage</h2>
             </div>
-            <div class="page-extra__actions"><button type="button" title="Profil bearbeiten"
-                class="profile-page-toggle"><span class="fas fa-pencil-alt"></span></button></div>
             <div class="page-extra__content-overflow-wrapper-outer">
               <div class="page-extra__content-overflow-wrapper-inner">
                 <div>
                   <div class="bbcode bbcode--profile-page">
-                    <h2>osu! Player since 2017</h2><br>Follow me on my Social Media!<br><br><strong>Twitch:</strong>
-                    <a rel="nofollow" href="https://twitter.com/MarcPlaying">https://twitter.com/MarcPlaying</a> (I
-                    try to stream every weekend)<br><strong>Twitter:</strong> <a rel="nofollow"
-                      href="https://www.twitch.tv/MarcAnime">https://www.twitch.tv/MarcAnime</a><br><br>
-                    <h2>PC Specs and some other stuff:</h2><br><strong>Keyboard:</strong> Logitech
-                    G105<br><strong>Mouse:</strong> Logitech G302<br><strong>Tablet:</strong> Huion
-                    420<br><br><strong>CPU:</strong> Intel Core i5-4460S<br><strong>RAM:</strong> 8GB
-                    DDR3<br><strong>GPU:</strong> NVIDIA GeForce GTX 745<br><br>
-                    <h2>Lovely guys:</h2><br>zD0ug7as, Thuwyn, TheTraveller and some more guys c:
+                    ${userpagebb}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        </#if>
+
         <div data-page-id="recent_activity"
           class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
           <div class="page-extra">

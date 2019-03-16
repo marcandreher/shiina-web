@@ -121,6 +121,7 @@ public class Profile extends Route {
 		m.put("puser", name);
 		m.put("pcountry", country);
 		m.put("pprivileges", privileges);
+		m.put("userpagebb", Permission.bbcode(m.get("userpages").toString()));
 		if(m.get("loggedin") == "true") {
 			if (m.get("userid").toString().contains(m.get("pid").toString())) {
 				m.put("yourself", "true");
