@@ -15,6 +15,7 @@ import freemarker.template.TemplateExceptionHandler;
 import kazukii.me.gg.configs.Config;
 import kazukii.me.gg.configs.u;
 import shiina.content.mysql;
+import shiina.sites.get.Clan;
 import shiina.sites.get.ClanLeaderboard;
 import shiina.sites.get.Download;
 import shiina.sites.get.Error;
@@ -50,7 +51,8 @@ public class Site {
 		msql = new mysql(Config.getString("mysqlusername"), Config.getString("mysqlpassword"), Config.getString("mysqldatabase"), Config.getString("mysqlip"), Integer.parseInt(Config.getString("mysqlport") + ""));
 		
 		Spark.setPort(Integer.parseInt(Config.getString("sparkport")));
-
+		
+		
 		String log4jConfPath ="log4j.properties";
 		PropertyConfigurator.configure(log4jConfPath);
 		
@@ -86,6 +88,9 @@ public class Site {
 		
 		getroutes.add(new Profile("/users/:id/:mode"));
 		getroutes.add(new Profile("/users/:id"));
+		
+		getroutes.add(new Clan("/clans/:id/:mode"));
+		getroutes.add(new Clan("/clans/:id"));
 		
 		getroutes.add(new Leaderboard("/rankings/osu/performance", "0"));
 		getroutes.add(new Leaderboard("/rankings/fruits/performance", "2"));

@@ -1,0 +1,209 @@
+<#include "base.html">
+  <div class="js-react--profile-page osu-layout osu-layout--full" data-react-turbolinks-loaded="1">
+    <div>
+      <div class="osu-layout osu-layout--full">
+        <div class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page" data-page-id="main">
+          <div class="header-v3 header-v3--users">
+            <div class="header-v3__bg"
+              style="background-image: url(&quot;https://osu.ppy.sh/images/headers/profile-covers/c7.jpg&quot;);"></div>
+            <div class="header-v3__spinner" data-visibility="hidden">
+              <div class="la-ball-clip-rotate"></div>
+            </div>
+            <div class="header-v3__overlay"></div>
+            <div class="osu-page osu-page--header-v3">
+              <div class="osu-page-header-v3 osu-page-header-v3--users">
+                <div class="osu-page-header-v3__title js-nav2--hidden-on-menu-access">
+                  <div class="osu-page-header-v3__title-icon" style="margin-bottom: 20px;">
+                    <div class="osu-page-header-v3__icon"></div>
+                  </div>
+                  <h1 class="osu-page-header-v3__title-text" style="margin-bottom: 20px;">Clan <span
+                      class="osu-page-header-v3__title-highlight" style="margin-bottom: 20px;">Info</span></h1>
+                </div>
+              </div>
+              <div class="game-mode">
+                <ul class="game-mode__items">
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "osu">game-mode-link--active"</#if>
+                      " href="/clans/${cid}/osu">osu</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "taiko">game-mode-link--active"
+                      </#if> " href="/clans/${cid}/taiko">osu!taiko</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "fruits">game-mode-link--active"
+                      </#if> " href="/clans/${cid}/fruits">osu!catch</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "mania">game-mode-link--active"
+                      </#if> " href="/clans/${cid}/mania">osu!mania</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="osu-page osu-page--users">
+            <div class="profile-header">
+              <div class="profile-header__top">
+                <div class="profile-info">
+                  <div class="profile-info__bg"
+                    style="background-image: url(&quot;https://osu.ppy.sh/images/headers/profile-covers/c7.jpg&quot;);">
+                  </div><a class="profile-info__avatar" data-hasqtip="0" data-vivaldi-spatnav-clickable="1">
+                    <div class="avatar avatar--full"
+                      style="background-image: url(<#if icon == "">https://a.enjuu.click/2944<#else>${icon}</#if>);">
+                    </div>
+                  </a>
+                  <div class="profile-info__details">
+                    <h1 class="profile-info__name">
+                      <p>${tag} &nbsp;</p><span class="u-ellipsis-overflow">${name}</span>
+                      <div class="profile-info__previous-usernames">
+                        <div class="profile-previous-usernames"><a></span></a>
+                          <div class="prs"><span class=""></span></div>
+                          <div class="profile-previous-usernames__content">
+                            <div class="profile-previous-usernames__title"></div>
+                            <div class="profile-previous-usernames__names"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </h1><span class="profile-info__title">&nbsp;</span>
+                    <div class="profile-info__icon-group">
+                      <div class="profile-info__icons"></div>
+                    </div>
+                  </div>
+                  <div class="profile-info__bar hidden-xs"></div>
+                </div>
+                <div class="profile-stats">
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Ranked Score</dt>
+                    <dd class="profile-stats__value">${ranked_score}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Total Score</dt>
+                    <dd class="profile-stats__value">${total_score}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Playcount</dt>
+                    <dd class="profile-stats__value">${playcount}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Replays seen</dt>
+                    <dd class="profile-stats__value">${replays_watched}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">PP</dt>
+                    <dd class="profile-stats__value">${pp}</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="profile-detail">
+                <div class="">
+                  <div class="profile-detail__row profile-detail__row--top">
+                    <div class="profile-detail__col profile-detail__col--top-left">
+                      <div class="profile-detail__top-left-item">
+                        <div class="value-display value-display--pp">
+                          <div class="value-display__label">pp</div>
+                          <div class="value-display__value">${pp}</div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="profile-detail__row">
+                    <div class="profile-detail__col profile-detail__col--bottom-left">
+                      <div class="u-full-size line-chart line-chart--profile-page"><svg width="709.4243774414062"
+                          height="135.13157653808594">
+                        </svg>
+                        <div class="line-chart__hover-area" style="top: 15px; right: 15px; bottom: 15px; left: 15px;">
+                          <div class="line-chart__hover" data-visibility="hidden">
+                            <div class="line-chart__hover-line" style=""></div>
+                            <div class="line-chart__hover-circle" style=""></div>
+                            <div class="line-chart__hover-info-box" data-float="right">
+                              <div class="line-chart__hover-info-box-text line-chart__hover-info-box-text--y">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="profile-detail__col profile-detail__col--bottom-right">
+                      <div class="profile-detail__bottom-right-item">
+                        <div class="value-display value-display--large">
+                          <div class="value-display__label">Global Ranking</div>
+                          <div class="value-display__value">#${rank}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
+              <div class="page-extra">
+                <div>
+                  <h2 class="page-extra__title">Admin<#if ownercount = 2>s</#if></h2>
+                </div>
+                <table class="ranking-page-table">
+                  <#list admins>
+                  <#items as admin>
+                        <tr class="ranking-page-table__row" style="color:white;">
+                          <td class="ranking-page-table__column">
+                            
+                            <div class="ranking-page-table__user-link">
+                                &nbsp;<span class="flag-country" style="background-image: url('https://osu.ppy.sh/images/flags/${admin.country}.png');" data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
+                              <a href="/users/${admin.id}">
+                                <span class="ranking-page-table__user-link-text">
+                                  ${admin.name}
+                                </span>
+                              </a>
+                            </div>
+                          </td>
+                          <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                            ${admin.pp}PP
+                          </td>
+                        </tr>
+                        </#items>
+                        </#list>
+        
+                  </tbody>
+                </table>
+                
+              </div>
+
+              <div
+              class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
+              <div class="page-extra">
+                <div>
+                  <h2 class="page-extra__title">Members</h2>
+                </div>
+                <table class="ranking-page-table">
+                  <#list members>
+                  <#items as member>
+                        <tr class="ranking-page-table__row" style="color:white;">
+                          <td class="ranking-page-table__column">
+                            
+                            <div class="ranking-page-table__user-link">
+                                &nbsp;<span class="flag-country" style="background-image: url('https://osu.ppy.sh/images/flags/${member.country}.png');" data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
+                              <a href="/users/${member.id}">
+                                <span class="ranking-page-table__user-link-text">
+                                  ${member.name}
+                                </span>
+                              </a>
+                            </div>
+                          </td>
+                          <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                            ${member.pp}PP
+                          </td>
+                        </tr>
+                        </#items>
+                        <#else>
+                        There are no Members yet
+                        </#list>
+        
+                  </tbody>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <#include "footer.html">

@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.PatternSyntaxException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,6 +19,7 @@ import kazukii.me.gg.configs.u;
 import kazukii.me.gg.sites.Permission;
 import shiina.content.API;
 import shiina.content.Beatmap;
+import shiina.content.Medal;
 import shiina.content.mysql;
 import shiina.main.Site;
 import spark.Request;
@@ -43,6 +43,8 @@ public class Profile extends Route {
 	@Override
 	public Object handle(Request request, Response response) {
 
+		
+		
 		Permission.hasPermissions(request, m);
 		
 		String name = null;
@@ -96,11 +98,13 @@ public class Profile extends Route {
 				mode = "mania";
 			}
 			response.redirect("/users/"+request.params(":id") + "/"+mode);
-			return null;
+			return "SS";
 		}
 		
+		
+		
 		try {
-			ResultSet ranks = mysql.Query("SELECT * FROM `beatmap_ranks` WHERE `id` = ?", request.params(":id"));
+			ResultSet ranks = mysql.Query("SELECT * FROM `beatmap_ranks` WHERE `userid` = ?", request.params(":id"));
 			Boolean working = false;
 			while (ranks.next()) {
 				m.put("pSS", ranks.getInt("SS"));
@@ -140,21 +144,16 @@ public class Profile extends Route {
 
 		JSONObject jsonObject = new JSONObject(API.request("users/full?id=" + request.params(":id")));
 		JSONObject mode = jsonObject.getJSONObject(request.params("mode").replaceAll("osu", "std").replaceAll("fruits", "ctb"));
-		
-	
-		
 		try {
 			m.put("prank", mode.getInt("global_leaderboard_rank"));
 		} catch (Exception e) {
 			m.put("prank", "Unknown");
 		}
-		
-		
-		m.put("p_rscore", mode.getInt("ranked_score"));
-		m.put("pscore", mode.getInt("total_score"));
+		m.put("p_rscore", mode.getBigInteger("ranked_score"));
+		m.put("pscore", mode.getBigInteger("total_score"));
 		m.put("ppc", mode.getInt("playcount"));
 		m.put("preplays", mode.getInt("replays_watched"));
-		m.put("phits", mode.getInt("total_hits"));
+		m.put("phits", mode.getBigInteger("total_hits"));
 		m.put("latest_activity", jsonObject.getString("latest_activity"));
 		m.put("registered_on", jsonObject.getString("registered_on"));
 		m.put("plvf", mode.getLong("level"));
@@ -196,10 +195,36 @@ public class Profile extends Route {
 			modeint = 3;
 		}
 		
+		ArrayList<Medal> medals = new ArrayList<>();
+		try {
+			ResultSet getMedals = mysql.Query("SELECT * FROM `users_achievements` WHERE `user_id` = ?", request.params("id"));
+			while (getMedals.next()) {
+				int aid = getMedals.getInt("achievement_id");
+				PreparedStatement stmt = mysql.getCon().prepareStatement("SELECT * FROM `achievements` WHERE `id` = ?");
+				stmt.setInt(1, aid);
+				if (Config.getString("debug").contains("true")) {
+					u.s.println(stmt.toString());
+				}
+				ResultSet getMedalInfos = stmt.executeQuery();
+				while(getMedalInfos.next()) {
+					Medal medal = new Medal();
+					medal.setDescription(getMedalInfos.getString("description"));
+					medal.setIcon(getMedalInfos.getString("icon"));
+					medal.setName(getMedalInfos.getString("name"));
+					medals.add(medal);
+				}
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		m.put("medallist", medals);
+		
 		ArrayList<Beatmap> f = new ArrayList<>();
 		
 		try {
-			JSONObject jsonObject2 = new JSONObject(API.request("users/scores/best?id=" + request.params(":id") + "&mode=" + modeint));
+			JSONObject jsonObject2 = new JSONObject(API.request("users/scores/best?id=" + request.params(":id") + "&mode=" + modeint + "&l=10"));
 			JSONArray scores = jsonObject2.getJSONArray("scores");
 			for (int i = 0; i < scores.length(); i++) {
 				String title = scores.getJSONObject(i).getJSONObject("beatmap").getString("song_name");
@@ -213,10 +238,6 @@ public class Profile extends Route {
 				b.setID(scores.getJSONObject(i).getJSONObject("beatmap").getInt("beatmap_id") + "");
 				b.setsetID(scores.getJSONObject(i).getInt("id") + "");
 				
-				if(i > 15) {
-					continue;
-				}
-				
 				f.add(b);
 			}
 		}catch(Exception e) {
@@ -229,7 +250,7 @@ public class Profile extends Route {
 		ArrayList<Beatmap> f2 = new ArrayList<>();
 		
 		try {
-			JSONObject jsonObject3 = new JSONObject(API.request("users/scores/recent?id=" + request.params(":id") + "&mode=" + modeint));
+			JSONObject jsonObject3 = new JSONObject(API.request("users/scores/recent?id=" + request.params(":id") + "&mode=" + modeint +"&l=10"));
 			JSONArray scores2 = jsonObject3.getJSONArray("scores");
 			
 			for (int i = 0; i < scores2.length(); i++) {
@@ -244,16 +265,14 @@ public class Profile extends Route {
 				b.setID(scores2.getJSONObject(i).getJSONObject("beatmap").getInt("beatmap_id") + "");
 				b.setsetID(scores2.getJSONObject(i).getInt("id") + "");
 				
-				if(i > 8) {
-					continue;
-				}
-				
 				f2.add(b);
 			}
 		
 		}catch(Exception e) {
 			
 		}
+		
+		
 		
 		m.put("last_ranks", f2);
 		
