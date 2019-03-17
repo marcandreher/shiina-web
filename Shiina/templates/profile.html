@@ -22,10 +22,14 @@
               </div>
               <div class="game-mode">
                 <ul class="game-mode__items">
-                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "osu">game-mode-link--active"</#if> " href="/users/${pid}/osu">osu</a></li>
-                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "taiko">game-mode-link--active"</#if> " href="/users/${pid}/taiko">osu!taiko</a></li>
-                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "fruits">game-mode-link--active"</#if> " href="/users/${pid}/fruits">osu!catch</a></li>
-                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "mania">game-mode-link--active"</#if> " href="/users/${pid}/mania">osu!mania</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "osu">game-mode-link--active"</#if>
+                      " href="/users/${pid}/osu">osu</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "taiko">game-mode-link--active"
+                      </#if> " href="/users/${pid}/taiko">osu!taiko</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "fruits">game-mode-link--active"
+                      </#if> " href="/users/${pid}/fruits">osu!catch</a></li>
+                  <li class="game-mode__item"><a class="game-mode-link <#if mode = "mania">game-mode-link--active"
+                      </#if> " href="/users/${pid}/mania">osu!mania</a></li>
                 </ul>
               </div>
             </div>
@@ -44,247 +48,252 @@
                   <div class="profile-info__details">
                     <h1 class="profile-info__name"><span class="u-ellipsis-overflow">${puser}</span>
                       <div class="profile-info__previous-usernames">
-                          <div class="profile-previous-usernames"><a></span></a>
-                            <div class="prs"><span
-                                class=""></span></div>
-                            <div class="profile-previous-usernames__content">
-                              <div class="profile-previous-usernames__title"></div>
-                              <div class="profile-previous-usernames__names"></div>
-                            </div>
+                        <div class="profile-previous-usernames"><a></span></a>
+                          <div class="prs"><span class=""></span></div>
+                          <div class="profile-previous-usernames__content">
+                            <div class="profile-previous-usernames__title"></div>
+                            <div class="profile-previous-usernames__names"></div>
+                          </div>
+                        </div>
                       </div>
+                    </h1><span class="profile-info__title">&nbsp;</span>
+                    <div class="profile-info__icon-group">
+                      <div class="profile-info__icons"></div>
+                      <div class="profile-info__icons profile-info__icons--flag"><a
+                          class="profile-info__flag profile-info__flag--country" href="/rankings/osu/performance"><span
+                            class="profile-info__flag-flag"><span class="flag-country flag-country--full"
+                              title="${pcountry}"
+                              style="background-image: url(https://osu.ppy.sh/images/flags/${pcountry}.png);"></span></span><span
+                            class="profile-info__flag-text">${pcountry}</span></a></div>
+                    </div>
                   </div>
-                  </h1><span class="profile-info__title">&nbsp;</span>
-                  <div class="profile-info__icon-group">
-                    <div class="profile-info__icons"></div>
-                    <div class="profile-info__icons profile-info__icons--flag"><a
-                        class="profile-info__flag profile-info__flag--country" href="/rankings/osu/performance"><span
-                          class="profile-info__flag-flag"><span class="flag-country flag-country--full"
-                            title="${pcountry}"
-                            style="background-image: url(https://osu.ppy.sh/images/flags/${pcountry}.png);"></span></span><span
-                          class="profile-info__flag-text">${pcountry}</span></a></div>
+                  <div class="profile-info__bar hidden-xs"></div>
+                </div>
+                <div class="profile-detail-mobile">
+                  <div class="profile-detail-mobile__item profile-detail-mobile__item--rank-chart">
+                  </div>
+                  <div class="profile-detail-mobile__item">
+                    <div class="value-display">
+                      <div class="value-display__label">Global rank</div>
+                      <div class="value-display__value">${prank}</div>
+                    </div>
+                  </div>
+                  <div class="profile-detail-mobile__item">
+                    <div class="value-display">
+                      <div class="value-display__label">Total Hits</div>
+                      <div class="value-display__value">${phits}</div>
+                    </div>
+                  </div>
+                  <div class="profile-detail-mobile__item profile-detail-mobile__item--half">
+                    <div class="value-display value-display--medals">
+                      <div class="value-display__label">Medals</div>
+                      <div class="value-display__value">${medals}</div>
+                    </div>
+                  </div>
+                  <div class="profile-detail-mobile__item profile-detail-mobile__item--half">
+                    <div class="value-display value-display--pp">
+                      <div class="value-display__label">pp</div>
+                      <div class="value-display__value">${ppp}</div>
+                    </div>
                   </div>
                 </div>
-                <div class="profile-info__bar hidden-xs"></div>
+                <div class="profile-stats">
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Ranked Score</dt>
+                    <dd class="profile-stats__value">${p_rscore}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Accuracy</dt>
+                    <dd class="profile-stats__value">${pacc}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Playcount</dt>
+                    <dd class="profile-stats__value">${ppc}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Total Points</dt>
+                    <dd class="profile-stats__value">${pscore}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Total Hits</dt>
+                    <dd class="profile-stats__value">${phits}</dd>
+                  </dl>
+                  <dl class="profile-stats__entry">
+                    <dt class="profile-stats__key">Replays seen</dt>
+                    <dd class="profile-stats__value">${preplays}</dd>
+                  </dl>
+                </div>
               </div>
-              <div class="profile-detail-mobile">
-                <div class="profile-detail-mobile__item profile-detail-mobile__item--rank-chart">
-                </div>
-                <div class="profile-detail-mobile__item">
-                  <div class="value-display">
-                    <div class="value-display__label">Global rank</div>
-                    <div class="value-display__value">${prank}</div>
-                  </div>
-                </div>
-                <div class="profile-detail-mobile__item">
-                  <div class="value-display">
-                    <div class="value-display__label">Total Hits</div>
-                    <div class="value-display__value">${phits}</div>
-                  </div>
-                </div>
-                <div class="profile-detail-mobile__item profile-detail-mobile__item--half">
-                  <div class="value-display value-display--medals">
-                    <div class="value-display__label">Medals</div>
-                    <div class="value-display__value">${medals}</div>
-                  </div>
-                </div>
-                <div class="profile-detail-mobile__item profile-detail-mobile__item--half">
-                  <div class="value-display value-display--pp">
-                    <div class="value-display__label">pp</div>
-                    <div class="value-display__value">${ppp}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="profile-stats">
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Ranked Score</dt>
-                  <dd class="profile-stats__value">${p_rscore}</dd>
-                </dl>
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Accuracy</dt>
-                  <dd class="profile-stats__value">${pacc}</dd>
-                </dl>
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Playcount</dt>
-                  <dd class="profile-stats__value">${ppc}</dd>
-                </dl>
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Total Points</dt>
-                  <dd class="profile-stats__value">${pscore}</dd>
-                </dl>
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Total Hits</dt>
-                  <dd class="profile-stats__value">${phits}</dd>
-                </dl>
-                <dl class="profile-stats__entry">
-                  <dt class="profile-stats__key">Replays seen</dt>
-                  <dd class="profile-stats__value">${preplays}</dd>
-                </dl>
-              </div>
-            </div>
-            <div class="profile-detail">
-              <div class="profile-detail__bar">
-                <div class="profile-detail-bar">
-                  <div class="profile-detail-bar__column profile-detail-bar__column--left">
-                    <#if loggedin == "false">
-                      <div title="Friends"><button type="button"
-                      class="user-action-button user-action-button--profile-page" disabled=""><span
-                        class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                        class="user-action-button__counter">${subs}</span></button></div>
-                    <#else>
-                      <div class="profile-detail-bar__menu-item">
-                          <#if yourself== "true">
-                          <div title="Friends"><button type="button"
+              <div class="profile-detail">
+                <div class="profile-detail__bar">
+                  <div class="profile-detail-bar">
+                    <div class="profile-detail-bar__column profile-detail-bar__column--left">
+                      <#if loggedin=="false">
+                        <div title="Friends"><button type="button"
                             class="user-action-button user-action-button--profile-page" disabled=""><span
                               class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
                               class="user-action-button__counter">${subs}</span></button></div>
-                          <#else>
-                            <#if isFriend = "true">
-                            <a href="/unfriend?action=user&id=${pid}"><div title="Remove friend"><button type="button"
-                              class="user-action-button user-action-button--profile-page user-action-button--friend" disabled=""><span
-                                class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                                class="user-action-button__counter">${subs}</span></button></div></a>
-                            <#else>
-                            <a href="/friend?action=user&user=${pid}"><div title="Add friend"><button type="button"
-                              class="user-action-button user-action-button--profile-page" disabled=""><span
-                                class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
-                                class="user-action-button__counter">${subs}</span></button></div></a>
+                        <#else>
+                          <div class="profile-detail-bar__menu-item">
+                            <#if yourself=="true">
+                              <div title="Friends"><button type="button"
+                                  class="user-action-button user-action-button--profile-page" disabled=""><span
+                                    class="user-action-button__icon-container"><i class="fas fa-user"></i></span><span
+                                    class="user-action-button__counter">${subs}</span></button></div>
+                              <#else>
+                                <#if isFriend="true">
+                                  <a href="/unfriend?action=user&id=${pid}">
+                                    <div title="Remove friend"><button type="button"
+                                        class="user-action-button user-action-button--profile-page user-action-button--friend"
+                                        disabled=""><span class="user-action-button__icon-container"><i
+                                            class="fas fa-user"></i></span><span
+                                          class="user-action-button__counter">${subs}</span></button></div>
+                                  </a>
+                                  <#else>
+                                    <a href="/friend?action=user&user=${pid}">
+                                      <div title="Add friend"><button type="button"
+                                          class="user-action-button user-action-button--profile-page" disabled=""><span
+                                            class="user-action-button__icon-container"><i
+                                              class="fas fa-user"></i></span><span
+                                            class="user-action-button__counter">${subs}</span></button></div>
+                                    </a>
+                                </#if>
                             </#if>
-                        </#if>
-                      </div>
-                    </#if>
-                  </div>
-                  <div class="profile-detail-bar__column profile-detail-bar__column--right">
-                    <div title="Progress of your level"
-                      class="profile-detail-bar__entry profile-detail-bar__entry--level-progress">
-                      <div class="bar bar--user-profile">
-                        <div class="bar__fill" style="width: ${plv}%"></div>
-                        <div class="bar__text">${plv}%</div>
-                      </div>
+                          </div>
+                      </#if>
                     </div>
-                    <div class="profile-detail-bar__entry profile-detail-bar__entry--level">
-                      <div class="profile-detail-bar__level" title="Level ${plvf}">${plvf}</div>
+                    <div class="profile-detail-bar__column profile-detail-bar__column--right">
+                      <div title="Progress of your level"
+                        class="profile-detail-bar__entry profile-detail-bar__entry--level-progress">
+                        <div class="bar bar--user-profile">
+                          <div class="bar__fill" style="width: ${plv}%"></div>
+                          <div class="bar__text">${plv}%</div>
+                        </div>
+                      </div>
+                      <div class="profile-detail-bar__entry profile-detail-bar__entry--level">
+                        <div class="profile-detail-bar__level" title="Level ${plvf}">${plvf}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="">
-                <div class="profile-detail__row profile-detail__row--top">
-                  <div class="profile-detail__col profile-detail__col--top-left">
-                    <div class="profile-detail__top-left-item">
-                      <div class="value-display value-display--medals">
-                        <div class="value-display__label">Medals</div>
-                        <div class="value-display__value">${medals}</div>
+                <div class="">
+                  <div class="profile-detail__row profile-detail__row--top">
+                    <div class="profile-detail__col profile-detail__col--top-left">
+                      <div class="profile-detail__top-left-item">
+                        <div class="value-display value-display--medals">
+                          <div class="value-display__label">Medals</div>
+                          <div class="value-display__value">${medals}</div>
+                        </div>
+                      </div>
+                      <div class="profile-detail__top-left-item">
+                        <div class="value-display value-display--pp">
+                          <div class="value-display__label">pp</div>
+                          <div class="value-display__value">${ppp}</div>
+                        </div>
                       </div>
                     </div>
-                    <div class="profile-detail__top-left-item">
-                      <div class="value-display value-display--pp">
-                        <div class="value-display__label">pp</div>
-                        <div class="value-display__value">${ppp}</div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="profile-detail__col">
-                    <div class="profile-rank-count">
-                      <div class="profile-rank-count__item">
-                        <div class="score-rank-v2 score-rank-v2--XH score-rank-v2--profile-page"></div>${pSSH}
-                      </div>
-                      <div class="profile-rank-count__item">
-                        <div class="score-rank-v2 score-rank-v2--X score-rank-v2--profile-page"></div>${pSS}
-                      </div>
-                      <div class="profile-rank-count__item">
-                        <div class="score-rank-v2 score-rank-v2--SH score-rank-v2--profile-page"></div>${pSH}
-                      </div>
-                      <div class="profile-rank-count__item">
-                        <div class="score-rank-v2 score-rank-v2--S score-rank-v2--profile-page"></div>${pS}
-                      </div>
-                      <div class="profile-rank-count__item">
-                        <div class="score-rank-v2 score-rank-v2--A score-rank-v2--profile-page"></div>${pA}
+                    <div class="profile-detail__col">
+                      <div class="profile-rank-count">
+                        <div class="profile-rank-count__item">
+                          <div class="score-rank-v2 score-rank-v2--XH score-rank-v2--profile-page"></div>${pSSH}
+                        </div>
+                        <div class="profile-rank-count__item">
+                          <div class="score-rank-v2 score-rank-v2--X score-rank-v2--profile-page"></div>${pSS}
+                        </div>
+                        <div class="profile-rank-count__item">
+                          <div class="score-rank-v2 score-rank-v2--SH score-rank-v2--profile-page"></div>${pSH}
+                        </div>
+                        <div class="profile-rank-count__item">
+                          <div class="score-rank-v2 score-rank-v2--S score-rank-v2--profile-page"></div>${pS}
+                        </div>
+                        <div class="profile-rank-count__item">
+                          <div class="score-rank-v2 score-rank-v2--A score-rank-v2--profile-page"></div>${pA}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                </div>
-                <div class="profile-detail__row">
-                  <div class="profile-detail__col profile-detail__col--bottom-left">
-                    <div class="u-full-size line-chart line-chart--profile-page"><svg width="709.4243774414062"
-                        height="135.13157653808594">
-                      </svg>
-                      <div class="line-chart__hover-area" style="top: 15px; right: 15px; bottom: 15px; left: 15px;">
-                        <div class="line-chart__hover" data-visibility="hidden">
-                          <div class="line-chart__hover-line" style=""></div>
-                          <div class="line-chart__hover-circle" style=""></div>
-                          <div class="line-chart__hover-info-box" data-float="right">
-                            <div class="line-chart__hover-info-box-text line-chart__hover-info-box-text--y">
+                  </div>
+                  <div class="profile-detail__row">
+                    <div class="profile-detail__col profile-detail__col--bottom-left">
+                      <div class="u-full-size line-chart line-chart--profile-page"><svg width="709.4243774414062"
+                          height="135.13157653808594">
+                        </svg>
+                        <div class="line-chart__hover-area" style="top: 15px; right: 15px; bottom: 15px; left: 15px;">
+                          <div class="line-chart__hover" data-visibility="hidden">
+                            <div class="line-chart__hover-line" style=""></div>
+                            <div class="line-chart__hover-circle" style=""></div>
+                            <div class="line-chart__hover-info-box" data-float="right">
+                              <div class="line-chart__hover-info-box-text line-chart__hover-info-box-text--y">
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="profile-detail__col profile-detail__col--bottom-right">
-                    <div class="profile-detail__bottom-right-item">
-                      <div class="value-display value-display--large">
-                        <div class="value-display__label">Global Ranking</div>
-                        <div class="value-display__value">#${prank}</div>
+                    <div class="profile-detail__col profile-detail__col--bottom-right">
+                      <div class="profile-detail__bottom-right-item">
+                        <div class="value-display value-display--large">
+                          <div class="value-display__label">Global Ranking</div>
+                          <div class="value-display__value">#${prank}</div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="profile-links">
-              <div class="profile-links__row profile-links__row--0">
-                <div class="profile-links__item "><span class="js-tooltip-time profile-links__value"
-                    title="${latest_activity}">${latest_activity}</span> joined</div>
-                <div class="profile-links__item ">Last seen <span class=" profile-links__value"><time class="timeago"
-                      datetime="${latest_activity}" title="${latest_activity}">${latest_activity}</time></span></div>
-              </div>
-              <#if all1 !="null">
-                <div class="profile-links__row profile-links__row--1">
-                  <#if location !="">
-                    <div class="profile-links__item"><span class="profile-links__icon" title="Position"><span
-                          class="fa-fw fas fa-map-marker-alt"></span></span><span
-                        class="profile-links__value">${location}</span></div>
-                  </#if>
-                  <#if interests !="">
-                    <div class="profile-links__item"><span class="profile-links__icon" title="Interests"><span
-                          class="fa-fw far fa-heart"></span></span><span
-                        class="profile-links__value">${interests}</span></div>
-                  </#if>
-                  <#if busyas !="">
-                    <div class="profile-links__item"><span class="profile-links__icon" title="Work as"><span
-                          class="fa-fw fas fa-suitcase"></span></span><span
-                        class="profile-links__value">${busyas}</span>
-                  </#if>
+              <div class="profile-links">
+                <div class="profile-links__row profile-links__row--0">
+                  <div class="profile-links__item "><span class="js-tooltip-time profile-links__value"
+                      title="${latest_activity}">${latest_activity}</span> joined</div>
+                  <div class="profile-links__item ">Last seen <span class=" profile-links__value"><time class="timeago"
+                        datetime="${latest_activity}" title="${latest_activity}">${latest_activity}</time></span></div>
                 </div>
-            </div>
-            </#if>
-            <#if all2 !="null">
-              <div class="profile-links__row profile-links__row<#if all1 ="null">--1<#else>--2</#if>">
-                <#if twitter !="">
-                  <div class="profile-links__item"><span class="profile-links__icon" title="Twitter"><span
-                        class="fa-fw fab fa-twitter"></span></span><a href="https://twitter.com/${twitter}"
-                      class="profile-links__value profile-links__value--link">${twitter}</a></div>
-                </#if>
-                <#if discord !="">
-                  <div class="profile-links__item"><span class="profile-links__icon" title="Discord"><span
-                        class="fa-fw fab fa-discord"></span></span><span class="profile-links__value"><span
-                        class="click-to-copy click-to-copy--profile-header-extra" data-tooltip-pin-position="true"
-                        data-tooltip-position="bottom center" href="#"
-                       >${discord}</span></span></div>
-                </#if>
-                <#if skype !="">
-                  <div class="profile-links__item"><span class="profile-links__icon" title="Skype"><span
-                        class="fa-fw fab fa-skype"></span></span><a href="skype:${skype}?chat"
-                      class="profile-links__value profile-links__value--link">${skype}</a></div>
-                </#if>
-                <#if site !="">
-                  <div class="profile-links__item"><span class="profile-links__icon" title="Website"><span
-                        class="fa-fw fas fa-link"></span></span><a href="${site}"
-                      class="profile-links__value profile-links__value--link">${site}</a></div>
-                </#if>
+                <#if all1 !="null">
+                  <div class="profile-links__row profile-links__row--1">
+                    <#if location !="">
+                      <div class="profile-links__item"><span class="profile-links__icon" title="Position"><span
+                            class="fa-fw fas fa-map-marker-alt"></span></span><span
+                          class="profile-links__value">${location}</span></div>
+                    </#if>
+                    <#if interests !="">
+                      <div class="profile-links__item"><span class="profile-links__icon" title="Interests"><span
+                            class="fa-fw far fa-heart"></span></span><span
+                          class="profile-links__value">${interests}</span></div>
+                    </#if>
+                    <#if busyas !="">
+                      <div class="profile-links__item"><span class="profile-links__icon" title="Work as"><span
+                            class="fa-fw fas fa-suitcase"></span></span><span
+                          class="profile-links__value">${busyas}</span>
+                    </#if>
+                  </div>
               </div>
+              </#if>
+              <#if all2 !="null">
+                <div class="profile-links__row profile-links__row<#if all1 =" null">--1<#else>--2
+              </#if>">
+              <#if twitter !="">
+                <div class="profile-links__item"><span class="profile-links__icon" title="Twitter"><span
+                      class="fa-fw fab fa-twitter"></span></span><a href="https://twitter.com/${twitter}"
+                    class="profile-links__value profile-links__value--link">${twitter}</a></div>
+              </#if>
+              <#if discord !="">
+                <div class="profile-links__item"><span class="profile-links__icon" title="Discord"><span
+                      class="fa-fw fab fa-discord"></span></span><span class="profile-links__value"><span
+                      class="click-to-copy click-to-copy--profile-header-extra" data-tooltip-pin-position="true"
+                      data-tooltip-position="bottom center" href="#">${discord}</span></span></div>
+              </#if>
+              <#if skype !="">
+                <div class="profile-links__item"><span class="profile-links__icon" title="Skype"><span
+                      class="fa-fw fab fa-skype"></span></span><a href="skype:${skype}?chat"
+                    class="profile-links__value profile-links__value--link">${skype}</a></div>
+              </#if>
+              <#if site !="">
+                <div class="profile-links__item"><span class="profile-links__icon" title="Website"><span
+                      class="fa-fw fas fa-link"></span></span><a href="${site}"
+                    class="profile-links__value profile-links__value--link">${site}</a></div>
+              </#if>
+            </div>
             </#if>
           </div>
         </div>
@@ -292,10 +301,10 @@
     </div>
     <div class="hidden-xs page-extra-tabs page-extra-tabs--profile-page js-switchable-mode-page--scrollspy-offset">
       <div class="osu-page">
-        <div class="page-mode page-mode--profile-page-extra ui-sortable" data-vivaldi-spatnav-clickable="1"><a
+        <div class="page-mode page-mode--profile-page-extra ui-sortable" data-vivaldi-spatnav-clickable="1"><#if userpages !=""><a
             class="page-mode__item js-sortable--tab ui-sortable-handle" data-page-id="me" href="#me"><span
               class="page-mode-link page-mode-link--profile-page"><span class="fake-bold"
-                data-content="Userpage">Userpage</span><span class="page-mode-link__stripe"></span></span></a><a
+                data-content="Userpage">Userpage</span><span class="page-mode-link__stripe"></span></span></a></#if><a
             class="page-mode__item js-sortable--tab ui-sortable-handle" data-page-id="top_ranks" href="#top_ranks"><span
               class="page-mode-link page-mode-link--profile-page"><span class="fake-bold"
                 data-content="Scores">Scores</span><span class="page-mode-link__stripe"></span></span></a><a
@@ -305,65 +314,45 @@
       </div>
     </div>
     <div class="osu-layout__section osu-layout__section--users-extra">
-        <div class="osu-layout__row ui-sortable" data-vivaldi-spatnav-clickable="1">
-    <#if userpages != "">
-    
-      
-        <div data-page-id="me"
-          class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
-          <div class="page-extra page-extra--userpage">
-            <div>
-              <h2 class="page-extra__title">Userpage</h2>
-            </div>
-            <div class="page-extra__content-overflow-wrapper-outer">
-              <div class="page-extra__content-overflow-wrapper-inner">
-                <div>
-                  <div class="bbcode bbcode--profile-page">
-                    ${userpagebb}
+      <div class="osu-layout__row ui-sortable" data-vivaldi-spatnav-clickable="1">
+        <#if userpages !="">
+          <div data-page-id="me"
+            class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
+            <div class="page-extra page-extra--userpage">
+              <div>
+                <h2 class="page-extra__title">Userpage</h2>
+              </div>
+              <div class="page-extra__content-overflow-wrapper-outer">
+                <div class="page-extra__content-overflow-wrapper-inner">
+                  <div>
+                    <div class="bbcode bbcode--profile-page">
+                      ${userpagebb}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
+
         </#if>
 
-        <div data-page-id="recent_activity"
-          class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
-          <div class="page-extra">
-            <div>
-              <h2 class="page-extra__title">Neulich</h2><span
-                class="page-extra__dragdrop-toggle hidden-xs js-profile-page-extra--sortable-handle ui-sortable-handle"><i
-                  class="fas fa-bars"></i></span>
-            </div>
-            <p class="profile-extra-entries">Dieser Benutzer hat in letzter Zeit nichts Besonderes getan!</p>
-          </div>
-        </div>
         <div data-page-id="top_ranks"
           class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
           <div class="page-extra">
             <div>
-              <h2 class="page-extra__title">Ränge</h2><span
-                class="page-extra__dragdrop-toggle hidden-xs js-profile-page-extra--sortable-handle ui-sortable-handle"><i
-                  class="fas fa-bars"></i></span>
+              <h2 class="page-extra__title">Scores</h2>
             </div>
             <div>
-              <h3 class="page-extra__title page-extra__title--small">Beste Performance</h3>
+              <h3 class="page-extra__title page-extra__title--small">Best Scores</h3>
               <div class="profile-extra-entries">
                 <div class="play-detail-list">
+                <#list top_ranks>
+                <#items as rank>
                   <div class="play-detail play-detail--highlightable play-detail--compact">
                     <div class="play-detail__group play-detail__group--top">
-                      <div class="play-detail__icon play-detail__icon--main">
-                        <div class="score-rank-v2 score-rank-v2--full score-rank-v2--A"></div>
-                      </div>
-                      <div class="play-detail__detail"><a href="https://osu.ppy.sh/beatmaps/1786703"
-                          class="play-detail__title u-ellipsis-overflow">Gu Niang De Jiu Wo <small
-                            class="play-detail__artist">von A Zhong Bu Dai Xi</small></a>
-                        <div class="play-detail__beatmap-and-time"><span class="play-detail__beatmap">TNTlealu's
-                            Insane</span><span class="play-detail__time"><time class="timeago"
-                              datetime="2018-11-25T15:56:32+00:00" title="2018-11-25T15:56:32+00:00">vor 3
-                              Monaten</time></span></div>
+                      <div class="play-detail__detail"><a href="/beatmaps/${rank.ID}"
+                          class="play-detail__title u-ellipsis-overflow">${rank.name} <small
+                            class="play-detail__artist">${rank.artist}</small></a>
                       </div><button class="play-detail__compact-toggle"><span
                           class="fas fa-chevron-down"></span></button>
                     </div>
@@ -374,174 +363,60 @@
                         </div>
                         <div class="play-detail__score-detail-top-right">
                           <div class="play-detail__accuracy-and-weighted-pp"><span
-                              class="play-detail__accuracy">97,45%</span><span
-                              class="play-detail__weighted-pp">66pp</span></div>
-                          <div class="play-detail__pp-weight">100% gewichtet</div>
+                              class="play-detail__accuracy">${rank.acc}%</span><span
+                              class="play-detail__weighted-pp">${rank.pp}pp</span></div>
                         </div>
                       </div>
-                      <div class="play-detail__score-detail play-detail__score-detail--mods">
-                        <div class="mods mods--profile-page">
-                          <div class="mods__mod">
-                            <div class="mods__mod-image">
-                              <div class="mod mod--HD" title="Hidden"></div>
-                            </div>
+                      <div class="play-detail__pp"><span>${rank.pp}<span class="play-detail__pp-unit">pp</span></span></div>
+                      <div class="play-detail__more">
+                        <a href="/web/replays/${rank.setid}"><div class="play-detail-menu"><button class="play-detail-menu__button" type="button"><i
+                              class="fas fa-download"></i></button></div></a>
+                      </div>
+                    </div>
+                  </div>
+                </#items>
+                <#else>
+                  <p>There are no best plays</p>
+            </#list>
+                </div>
+
+                <h3 class="page-extra__title page-extra__title--small">Last Scores</h3>
+                <div class="profile-extra-entries">
+                  <div class="play-detail-list">
+                  <#list last_ranks>
+                  <#items as rank>
+                    <div class="play-detail play-detail--highlightable play-detail--compact">
+                      <div class="play-detail__group play-detail__group--top">
+                        <div class="play-detail__detail"><a href="/beatmaps/${rank.ID}"
+                            class="play-detail__title u-ellipsis-overflow">${rank.name} <small
+                              class="play-detail__artist">${rank.artist}</small></a>
+                        </div><button class="play-detail__compact-toggle"><span
+                            class="fas fa-chevron-down"></span></button>
+                      </div>
+                      <div class="play-detail__group play-detail__group--bottom">
+                        <div class="play-detail__score-detail play-detail__score-detail--score">
+                          <div class="play-detail__icon play-detail__icon--extra">
+                            <div class="score-rank-v2 score-rank-v2--full score-rank-v2--A"></div>
+                          </div>
+                          <div class="play-detail__score-detail-top-right">
+                            <div class="play-detail__accuracy-and-weighted-pp"><span
+                                class="play-detail__accuracy">${rank.acc}%</span><span
+                                class="play-detail__weighted-pp">${rank.pp}pp</span></div>
                           </div>
                         </div>
+                        <div class="play-detail__pp"><span>${rank.pp}<span class="play-detail__pp-unit">pp</span></span></div>
+                        <div class="play-detail__more">
+                          <a href="/web/replays/${rank.setid}"><div class="play-detail-menu"><button class="play-detail-menu__button" type="button"><i
+                                class="fas fa-download"></i></button></div></a>
+                        </div>
                       </div>
-                      <div class="play-detail__pp"><span>66<span class="play-detail__pp-unit">pp</span></span></div>
-                      <div class="play-detail__more"></div>
                     </div>
+                  </#items>
+                  <#else>
+                  <p>There are no latest plays</p>
+              </#list>
                   </div>
-                  <div class="play-detail play-detail--highlightable play-detail--compact">
-                    <div class="play-detail__group play-detail__group--top">
-                      <div class="play-detail__icon play-detail__icon--main">
-                        <div class="score-rank-v2 score-rank-v2--full score-rank-v2--S"></div>
-                      </div>
-                      <div class="play-detail__detail"><a href="https://osu.ppy.sh/beatmaps/1180209"
-                          class="play-detail__title u-ellipsis-overflow">Harumachi Clover <small
-                            class="play-detail__artist">von Hanasaka Yui(CV: M.A.O)</small></a>
-                        <div class="play-detail__beatmap-and-time"><span
-                            class="play-detail__beatmap">Halation</span><span class="play-detail__time"><time
-                              class="timeago" datetime="2018-12-08T11:54:32+00:00" title="2018-12-08T11:54:32+00:00">vor
-                              3 Monaten</time></span></div>
-                      </div><button class="play-detail__compact-toggle"><span
-                          class="fas fa-chevron-down"></span></button>
-                    </div>
-                    <div class="play-detail__group play-detail__group--bottom">
-                      <div class="play-detail__score-detail play-detail__score-detail--score">
-                        <div class="play-detail__icon play-detail__icon--extra">
-                          <div class="score-rank-v2 score-rank-v2--full score-rank-v2--S"></div>
-                        </div>
-                        <div class="play-detail__score-detail-top-right">
-                          <div class="play-detail__accuracy-and-weighted-pp"><span
-                              class="play-detail__accuracy">95,56%</span><span
-                              class="play-detail__weighted-pp">61pp</span></div>
-                          <div class="play-detail__pp-weight">95% gewichtet</div>
-                        </div>
-                      </div>
-                      <div class="play-detail__score-detail play-detail__score-detail--mods">
-                        <div class="mods mods--profile-page"></div>
-                      </div>
-                      <div class="play-detail__pp"><span>64<span class="play-detail__pp-unit">pp</span></span></div>
-                      <div class="play-detail__more"></div>
-                    </div>
-                  </div>
-                  <div class="play-detail play-detail--highlightable play-detail--compact">
-                    <div class="play-detail__group play-detail__group--top">
-                      <div class="play-detail__icon play-detail__icon--main">
-                        <div class="score-rank-v2 score-rank-v2--full score-rank-v2--A"></div>
-                      </div>
-                      <div class="play-detail__detail"><a href="https://osu.ppy.sh/beatmaps/1059390"
-                          class="play-detail__title u-ellipsis-overflow">Granat <small class="play-detail__artist">von
-                            Drop</small></a>
-                        <div class="play-detail__beatmap-and-time"><span class="play-detail__beatmap">Insane</span><span
-                            class="play-detail__time"><time class="timeago" datetime="2018-12-28T11:45:53+00:00"
-                              title="2018-12-28T11:45:53+00:00">vor 2 Monaten</time></span></div>
-                      </div><button class="play-detail__compact-toggle"><span
-                          class="fas fa-chevron-down"></span></button>
-                    </div>
-                    <div class="play-detail__group play-detail__group--bottom">
-                      <div class="play-detail__score-detail play-detail__score-detail--score">
-                        <div class="play-detail__icon play-detail__icon--extra">
-                          <div class="score-rank-v2 score-rank-v2--full score-rank-v2--A"></div>
-                        </div>
-                        <div class="play-detail__score-detail-top-right">
-                          <div class="play-detail__accuracy-and-weighted-pp"><span
-                              class="play-detail__accuracy">96,64%</span><span
-                              class="play-detail__weighted-pp">52pp</span></div>
-                          <div class="play-detail__pp-weight">90% gewichtet</div>
-                        </div>
-                      </div>
-                      <div class="play-detail__score-detail play-detail__score-detail--mods">
-                        <div class="mods mods--profile-page"></div>
-                      </div>
-                      <div class="play-detail__pp"><span>58<span class="play-detail__pp-unit">pp</span></span></div>
-                      <div class="play-detail__more"></div>
-                    </div>
-                  </div>
-                  <div class="play-detail play-detail--highlightable play-detail--compact">
-                    <div class="play-detail__group play-detail__group--top">
-                      <div class="play-detail__icon play-detail__icon--main">
-                        <div class="score-rank-v2 score-rank-v2--full score-rank-v2--B"></div>
-                      </div>
-                      <div class="play-detail__detail"><a href="https://osu.ppy.sh/beatmaps/486513"
-                          class="play-detail__title u-ellipsis-overflow">In my room <small
-                            class="play-detail__artist">von FELT</small></a>
-                        <div class="play-detail__beatmap-and-time"><span
-                            class="play-detail__beatmap">Tranquility</span><span class="play-detail__time"><time
-                              class="timeago" datetime="2017-11-25T14:15:29+00:00" title="2017-11-25T14:15:29+00:00">vor
-                              etwa einem Jahr</time></span></div>
-                      </div><button class="play-detail__compact-toggle"><span
-                          class="fas fa-chevron-down"></span></button>
-                    </div>
-                    <div class="play-detail__group play-detail__group--bottom">
-                      <div class="play-detail__score-detail play-detail__score-detail--score">
-                        <div class="play-detail__icon play-detail__icon--extra">
-                          <div class="score-rank-v2 score-rank-v2--full score-rank-v2--B"></div>
-                        </div>
-                        <div class="play-detail__score-detail-top-right">
-                          <div class="play-detail__accuracy-and-weighted-pp"><span
-                              class="play-detail__accuracy">91,04%</span><span
-                              class="play-detail__weighted-pp">50pp</span></div>
-                          <div class="play-detail__pp-weight">86% gewichtet</div>
-                        </div>
-                      </div>
-                      <div class="play-detail__score-detail play-detail__score-detail--mods">
-                        <div class="mods mods--profile-page"></div>
-                      </div>
-                      <div class="play-detail__pp"><span>58<span class="play-detail__pp-unit">pp</span></span></div>
-                      <div class="play-detail__more"></div>
-                    </div>
-                  </div>
-                  <div class="play-detail play-detail--highlightable play-detail--compact">
-                    <div class="play-detail__group play-detail__group--top">
-                      <div class="play-detail__icon play-detail__icon--main">
-                        <div class="score-rank-v2 score-rank-v2--full score-rank-v2--S"></div>
-                      </div>
-                      <div class="play-detail__detail"><a href="https://osu.ppy.sh/beatmaps/1697648"
-                          class="play-detail__title u-ellipsis-overflow">Picotto! Papitto!! GARUPA*PICO!!! (TV Size)
-                          <small class="play-detail__artist">von Aimi, Sakura Ayane, Maeshima Ami, Aiba Aina, Itou
-                            Miku</small></a>
-                        <div class="play-detail__beatmap-and-time"><span class="play-detail__beatmap">Yonaka's
-                            Hard</span><span class="play-detail__time"><time class="timeago"
-                              datetime="2018-12-08T12:07:12+00:00" title="2018-12-08T12:07:12+00:00">vor 3
-                              Monaten</time></span></div>
-                      </div><button class="play-detail__compact-toggle"><span
-                          class="fas fa-chevron-down"></span></button>
-                    </div>
-                    <div class="play-detail__group play-detail__group--bottom">
-                      <div class="play-detail__score-detail play-detail__score-detail--score">
-                        <div class="play-detail__icon play-detail__icon--extra">
-                          <div class="score-rank-v2 score-rank-v2--full score-rank-v2--S"></div>
-                        </div>
-                        <div class="play-detail__score-detail-top-right">
-                          <div class="play-detail__accuracy-and-weighted-pp"><span
-                              class="play-detail__accuracy">98,55%</span><span
-                              class="play-detail__weighted-pp">46pp</span></div>
-                          <div class="play-detail__pp-weight">81% gewichtet</div>
-                        </div>
-                      </div>
-                      <div class="play-detail__score-detail play-detail__score-detail--mods">
-                        <div class="mods mods--profile-page"></div>
-                      </div>
-                      <div class="play-detail__pp"><span>56<span class="play-detail__pp-unit">pp</span></span></div>
-                      <div class="play-detail__more"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="profile-extra-entries__item"><button type="button"
-                    class="show-more-link show-more-link--profile-page show-more-link--t-community-user-graygreen-darker"><span
-                      class="show-more-link__spinner">
-                      <div class="la-ball-clip-rotate"></div>
-                    </span><span class="show-more-link__label"><span class="show-more-link__label-icon"><span
-                          class="fas fa-angle-down"></span></span><span class="show-more-link__label-text">mehr
-                        anzeigen</span><span class="show-more-link__label-icon"><span
-                          class="fas fa-angle-down"></span></span></span></button></div>
               </div>
-            </div>
-            <div>
-              <h3 class="page-extra__title page-extra__title--small">Erster Platz </h3>
-              <p class="profile-extra-entries">Noch keine Performance-Rekorde. :(</p>
             </div>
           </div>
         </div>

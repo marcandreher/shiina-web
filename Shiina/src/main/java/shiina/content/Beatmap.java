@@ -7,6 +7,8 @@ public class Beatmap {
     private String Artist;
     private String id;
     private String set_id;
+    private int pp;
+    private double acc;
     private int Playcount;
     
     private String Timestamp;
@@ -43,6 +45,14 @@ public class Beatmap {
     	Playcount = playcount;
     }
     
+    public void setPP(int ppp) {
+    	pp = ppp;
+    }
+    
+    public void setAcc(double accc) {
+    	acc = accc;
+    }
+    
     public int getPlaycount() {
         return Playcount;
     }
@@ -55,6 +65,14 @@ public class Beatmap {
 
     public String getName() {
         return Name;
+    }
+    
+    public double getacc() {
+        return acc;
+    }
+    
+    public int getpp() {
+        return pp;
     }
 
     public void setName(String name) {

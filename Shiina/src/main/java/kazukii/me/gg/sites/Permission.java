@@ -168,7 +168,7 @@ public class Permission {
         bbMap.put("\\[YOUTUBE\\](.+?)\\[/YOUTUBE\\]", "<object width='640' height='380'><param name='movie' value='http://www.youtube.com/v/$1'></param><embed src='http://www.youtube.com/v/$1' type='application/x-shockwave-flash' width='640' height='380'></embed></object>");
         bbMap.put("\\[YOUTUBE\\](.+?)\\[/YOUTUBE\\]", "<video src='$1' />");
 
-        for (Map.Entry entry: bbMap.entrySet()) {
+        for (@SuppressWarnings("rawtypes") Map.Entry entry: bbMap.entrySet()) {
             html = html.replaceAll(entry.getKey().toString(), entry.getValue().toString());
         }
 

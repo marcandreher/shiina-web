@@ -5,9 +5,12 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.PatternSyntaxException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import freemarker.template.Template;
@@ -16,6 +19,7 @@ import kazukii.me.gg.configs.Config;
 import kazukii.me.gg.configs.u;
 import kazukii.me.gg.sites.Permission;
 import shiina.content.API;
+import shiina.content.Beatmap;
 import shiina.content.mysql;
 import shiina.main.Site;
 import spark.Request;
@@ -132,9 +136,13 @@ public class Profile extends Route {
 			m.put("yourself", "false");
 		}
 		
+		
 
 		JSONObject jsonObject = new JSONObject(API.request("users/full?id=" + request.params(":id")));
 		JSONObject mode = jsonObject.getJSONObject(request.params("mode").replaceAll("osu", "std").replaceAll("fruits", "ctb"));
+		
+	
+		
 		try {
 			m.put("prank", mode.getInt("global_leaderboard_rank"));
 		} catch (Exception e) {
@@ -155,7 +163,6 @@ public class Profile extends Route {
 			m.put("plv", lv.substring((int)Math.log10(mode.getLong("level"))+2, lv.length()).substring(0,2));
 		}catch(Exception e) {
 			m.put("plv", "0");
-			e.printStackTrace();
 		}
 		m.put("pacc", mode.getLong("accuracy"));
 		m.put("ppp", mode.getInt("pp"));
@@ -176,6 +183,79 @@ public class Profile extends Route {
 		} catch (Exception e) {
 			m.put("subs", 0);
 		}
+		
+		int modeint = 0;
+		String modee = request.params("mode");
+		if(modee.contains("osu")) {
+			modeint = 0;
+		}else if(modee.contains("taiko")) {
+			modeint = 1;
+		}else if(modee.contains("fruits")) {
+			modeint = 2;
+		}else if(modee.contains("mania")) {
+			modeint = 3;
+		}
+		
+		ArrayList<Beatmap> f = new ArrayList<>();
+		
+		try {
+			JSONObject jsonObject2 = new JSONObject(API.request("users/scores/best?id=" + request.params(":id") + "&mode=" + modeint));
+			JSONArray scores = jsonObject2.getJSONArray("scores");
+			for (int i = 0; i < scores.length(); i++) {
+				String title = scores.getJSONObject(i).getJSONObject("beatmap").getString("song_name");
+				String[] separated = title.split("\\-");
+				
+				Beatmap b = new Beatmap();
+				b.setAcc(scores.getJSONObject(i).getDouble("accuracy"));
+				b.setArtist(separated[0]);
+				b.setName(title.replaceAll(separated[0], "").replaceAll("-", ""));
+				b.setPP(scores.getJSONObject(i).getInt("pp"));
+				b.setID(scores.getJSONObject(i).getJSONObject("beatmap").getInt("beatmap_id") + "");
+				b.setsetID(scores.getJSONObject(i).getInt("id") + "");
+				
+				if(i > 15) {
+					continue;
+				}
+				
+				f.add(b);
+			}
+		}catch(Exception e) {
+			
+		}
+		
+		m.put("top_ranks", f);
+		
+		//Last Ranks
+		ArrayList<Beatmap> f2 = new ArrayList<>();
+		
+		try {
+			JSONObject jsonObject3 = new JSONObject(API.request("users/scores/recent?id=" + request.params(":id") + "&mode=" + modeint));
+			JSONArray scores2 = jsonObject3.getJSONArray("scores");
+			
+			for (int i = 0; i < scores2.length(); i++) {
+				String title = scores2.getJSONObject(i).getJSONObject("beatmap").getString("song_name");
+				String[] separated = title.split("\\-");
+				
+				Beatmap b = new Beatmap();
+				b.setAcc(scores2.getJSONObject(i).getDouble("accuracy"));
+				b.setArtist(separated[0]);
+				b.setName(title.replaceAll(separated[0], "").replaceAll("-", ""));
+				b.setPP(scores2.getJSONObject(i).getInt("pp"));
+				b.setID(scores2.getJSONObject(i).getJSONObject("beatmap").getInt("beatmap_id") + "");
+				b.setsetID(scores2.getJSONObject(i).getInt("id") + "");
+				
+				if(i > 8) {
+					continue;
+				}
+				
+				f2.add(b);
+			}
+		
+		}catch(Exception e) {
+			
+		}
+		
+		m.put("last_ranks", f2);
 		
 		if(m.get("loggedin") == "true") {
 			try {
