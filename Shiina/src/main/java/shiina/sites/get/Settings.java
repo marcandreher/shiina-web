@@ -29,7 +29,7 @@ public class Settings extends Route {
 		m.put("titlebar", "Settings");
 		m.put("fixed", "false");
 
-		if (!Permission.hasPermissions(request, m)) {
+		if (!Permission.hasPermissions(request, m, response)) {
 			response.redirect("/home");
 			return null;
 		}

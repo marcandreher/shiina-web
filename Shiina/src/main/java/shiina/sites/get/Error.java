@@ -19,7 +19,7 @@ public class Error {
 		m.put("loggedin", "true");
 		m.put("titlebar", "Error");
 		m.put("fixed", "true");
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, null);
 		
 		m.put("error", error);
 		m.put("lang", lang);

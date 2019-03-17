@@ -45,7 +45,7 @@ public class Profile extends Route {
 
 		
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		String name = null;
 		int privileges = 0;

@@ -6,10 +6,12 @@ import java.util.Map;
 
 import shiina.content.mysql;
 import spark.Request;
+import spark.Response;
 
 public class Permission {
 	
-	public static boolean hasPermissions(Request request, Map<String, Object> map) {
+	public static boolean hasPermissions(Request request, Map<String, Object> map, Response response) {
+		response.type("text/html");
 		if(request.cookie("token") == null) {
 			map.put("loggedin", "false");
 			return false;

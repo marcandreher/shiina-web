@@ -27,7 +27,7 @@ public class Login extends Route {
 	public Object handle(Request request, Response response) {
 		m.put("titlebar", "Login");
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		u.s.println(Site.requestAndResponseInfoToString(request, response));
 		m.put("fixed", "true");

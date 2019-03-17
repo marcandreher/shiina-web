@@ -41,7 +41,7 @@ public class Leaderboard extends Route {
 		int nextpage = page + 1;
 
 		m.put("titlebar", "Leaderboard");
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 
 		ArrayList<LeaderboardContent> neww = new ArrayList<LeaderboardContent>();
 		JSONObject jsonObject = new JSONObject(API.request("leaderboard?p=" + page + "&mode=" + mode));

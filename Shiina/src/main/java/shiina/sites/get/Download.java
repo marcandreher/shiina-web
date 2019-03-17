@@ -26,7 +26,7 @@ public class Download extends Route {
 	public Object handle(Request request, Response response) {
 		m.put("titlebar", "Download");
 		m.put("fixed", "true");
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 
 		try {
 			Template template = Site.cfg.getTemplate("download.html");

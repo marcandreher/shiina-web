@@ -30,7 +30,7 @@ public class Extras extends Route{
 		String skype = request.queryParams("skype");
 		String site = request.queryParams("website");
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		int i = 0;
 		

@@ -20,7 +20,7 @@ public class Friend extends Route {
 	@Override
 	public Object handle(Request request, Response response) {
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		if(request.queryParams("action") == null || request.queryParams("user") == null) {
 			return new Error().generateError(request, "null", "null");

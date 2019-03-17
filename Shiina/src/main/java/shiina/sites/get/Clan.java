@@ -39,7 +39,7 @@ public class Clan extends Route {
 			response.redirect("/clans/"+clanid+"/osu");
 			return null;
 		}
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		JSONObject jsonObject = new JSONObject(API.request("clans?id="+clanid));
 		if(jsonObject.getInt("code") == 400) {

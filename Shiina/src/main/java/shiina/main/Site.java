@@ -137,8 +137,8 @@ public class Site {
 				if(s == true) {
 					return null;
 				}else {
-					return new Error().generateError(request, "404", "Not found");
-				}
+					return null;
+				}	
 			}
 		});
 		

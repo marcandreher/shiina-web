@@ -26,7 +26,7 @@ public class Userpage extends Route {
 
 		u.s.println(userpage);
 
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 
 		int i = 0;
 

@@ -32,7 +32,7 @@ public class Friends extends Route {
 	public Object handle(Request request, Response response) {
 		m.put("titlebar", "Friends");
 
-		if (!Permission.hasPermissions(request, m)) {
+		if (!Permission.hasPermissions(request, m, response)) {
 			response.redirect("/home");
 			return null;
 		}

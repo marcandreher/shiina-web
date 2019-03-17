@@ -33,7 +33,7 @@ public class Home extends Route {
 		m.put("titlebar", "Home");
 		m.put("fixed", "false");
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		try {
 			ResultSet usercount = mysql.Query("SELECT COUNT(*) AS count FROM users");

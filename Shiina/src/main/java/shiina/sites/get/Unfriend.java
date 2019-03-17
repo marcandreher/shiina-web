@@ -20,7 +20,7 @@ public class Unfriend extends Route {
 	@Override
 	public Object handle(Request request, Response response) {
 		
-		Permission.hasPermissions(request, m);
+		Permission.hasPermissions(request, m, response);
 		
 		
 		try {
