@@ -137,48 +137,26 @@
                 <div>
                   <h2 class="page-extra__title">Admin<#if ownercount = 2>s</#if></h2>
                 </div>
+                <div class="ranking-page">
                 <table class="ranking-page-table">
-                  <#list admins>
-                  <#items as admin>
-                        <tr class="ranking-page-table__row" style="color:white;">
-                          <td class="ranking-page-table__column">
-                            
-                            <div class="ranking-page-table__user-link">
-                                &nbsp;<span class="flag-country" style="background-image: url('https://osu.ppy.sh/images/flags/${admin.country}.png');" data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
-                              <a href="/users/${admin.id}">
-                                <span class="ranking-page-table__user-link-text">
-                                  ${admin.name}
-                                </span>
-                              </a>
-                            </div>
-                          </td>
-                          <td class="ranking-page-table__column ranking-page-table__column--dimmed">
-                            ${admin.pp}PP
-                          </td>
-                        </tr>
-                        </#items>
-                        </#list>
-        
-                  </tbody>
-                </table>
-                
-              </div>
 
-              <div
-              class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
-              <div class="page-extra">
-                <div>
-                  <h2 class="page-extra__title">Members</h2>
-                </div>
-                <table class="ranking-page-table">
-                  <#list members>
+                    <thead>
+                        <tr>
+                          <th class="ranking-page-table__heading"></th>
+                          <th class="ranking-page-table__heading">
+                            Performance
+                          </th>
+                        </tr>
+                      </thead>
+
+                  <#list admins>
                   <#items as member>
                         <tr class="ranking-page-table__row" style="color:white;">
                           <td class="ranking-page-table__column">
                             
                             <div class="ranking-page-table__user-link">
                                 &nbsp;<span class="flag-country" style="background-image: url('https://osu.ppy.sh/images/flags/${member.country}.png');" data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
-                              <a href="/users/${member.id}">
+                              <a href="/users/${member.id}/${mode}">
                                 <span class="ranking-page-table__user-link-text">
                                   ${member.name}
                                 </span>
@@ -196,6 +174,54 @@
         
                   </tbody>
                 </table>
+              </div>
+              </div>
+
+              <div
+              class="js-switchable-mode-page--scrollspy js-switchable-mode-page--page js-sortable--page undefined">
+              <div class="page-extra">
+                <div>
+                  <h2 class="page-extra__title">Members</h2>
+                </div>
+
+                <div class="ranking-page">
+                <table class="ranking-page-table">
+
+                    <thead>
+                        <tr>
+                          <th class="ranking-page-table__heading"></th>
+                          <th class="ranking-page-table__heading">
+                            Performance
+                          </th>
+                        </tr>
+                      </thead>
+
+                  <#list members>
+                  <#items as member>
+                        <tr class="ranking-page-table__row" style="color:white;">
+                          <td class="ranking-page-table__column">
+                            
+                            <div class="ranking-page-table__user-link">
+                                &nbsp;<span class="flag-country" style="background-image: url('https://osu.ppy.sh/images/flags/${member.country}.png');" data-hasqtip="4" data-vivaldi-spatnav-clickable="1"></span>
+                              <a href="/users/${member.id}/${mode}">
+                                <span class="ranking-page-table__user-link-text">
+                                  ${member.name}
+                                </span>
+                              </a>
+                            </div>
+                          </td>
+                          <td class="ranking-page-table__column ranking-page-table__column--dimmed">
+                            ${member.pp}PP
+                          </td>
+                        </tr>
+                        </#items>
+                        <#else>
+                        There are no Members yet
+                        </#list>
+        
+                  </tbody>
+                </table>
+              </div>
                 
               </div>
             </div>
